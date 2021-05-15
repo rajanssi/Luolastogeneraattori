@@ -10,7 +10,7 @@ Pohjimmiltaan sovellus luo algoritmillisesti huoneita luolastoon. Generoidussa l
 
 Luolastoon generointiin käytettävät algoritmit eivät vielä tässä vaiheessa ole selvillä, joten aika- ja tilavaativuudet eivät ole tiedossa. Ohjelma ei kuitenkaan tule olemaan reaaliaikainen ihan salamannopeita aikavaativuuksia ei välttämättä tarvita. 
 
-Jatkokehitysidana oli sijoittaa jonkinlaisia tekoälyhahmoja luolastoon (esim. hirviöitä, jotka jahtaavat pelaajaa), jotka voisivat liikkua paikasta A paikkaan B mm. syvyyshaun avulla. Myös esimerkiksi optimaalisen reitin valinta huoneiden välillä voitaisiin selvittää ja sen perusteella 
+Jatkokehitysidana oli sijoittaa jonkinlaisia tekoälyhahmoja luolastoon (esim. hirviöitä, jotka jahtaavat pelaajaa), jotka voisivat liikkua paikasta A paikkaan B mm. leveyshaun avulla. Myös esimerkiksi optimaalisen reitin valinta huoneiden välillä voitaisiin selvittää ja sen perusteella 
 
 ## Käyttöliittymä ja perustoiminallisuus
 
