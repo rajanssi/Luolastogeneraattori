@@ -14,7 +14,7 @@ Ohjelmassa on nyt alustava käyttöliittymä ja luolia generoiva algoritmi. Luol
 
 Erilaisia luolaston generointiin tarkoitettuja algoritmeja tuli tutkailtua. Erityisesti edellä mainittu BSP algoritmi ja BSP-puu. Käyttöliittymän rakentaminen Zirconilla. 
 
-### Mikä jäi epäselväksi tai tuottanut vaikeuksia? Vastaa tähän kohtaan rehellisesti, koska saat tarvittaessa apua tämän kohdan perusteella.
+### Mikä jäi epäselväksi tai tuottanut vaikeuksia? 
 
 Ei nyt tule mitään erityistä mieleen.
 
