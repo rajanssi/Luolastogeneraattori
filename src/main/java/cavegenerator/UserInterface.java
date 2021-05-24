@@ -23,7 +23,7 @@ class UserInterface {
         config = AppConfig.newBuilder()
                 .withTitle("Luolasto")
                 .withSize(MAP_WIDTH, MAP_HEIGHT)
-                .withDefaultTileset(CP437TilesetResources.rexPaint16x16())
+                .withDefaultTileset(CP437TilesetResources.mkv12x12())
                 .build();
 
         tileGrid = SwingApplications.startTileGrid(config);
@@ -32,7 +32,7 @@ class UserInterface {
                 .withSize(tileGrid.getSize())
                 .withFiller(Tile.newBuilder()
                         .withCharacter('#')
-                        .withBackgroundColor(TileColor.transparent())
+                        .withBackgroundColor(ANSITileColor.BLUE)
                         .withForegroundColor(ANSITileColor.GRAY)
                         .build())
                 .build();
@@ -41,7 +41,7 @@ class UserInterface {
                 Position.zero(),
                 tileGrid.getSize())
                 .toTileGraphics(Tile.newBuilder()
-                                .withCharacter(Symbols.BLOCK_SOLID)
+                                .withCharacter('#')
                                 .withBackgroundColor(TileColor.transparent())
                                 .withForegroundColor(ANSITileColor.GREEN)
                                 .build(),
@@ -59,7 +59,7 @@ class UserInterface {
                         .withFiller(Tile.newBuilder()
                                 .withForegroundColor(ANSITileColor.WHITE)
                                 .withBackgroundColor(ANSITileColor.BLACK)
-                                .withCharacter(Symbols.BULLET_SMALL)
+                                .withCharacter('.')
                                 .build())
                         .build())
                 .withOffset(x, y)
