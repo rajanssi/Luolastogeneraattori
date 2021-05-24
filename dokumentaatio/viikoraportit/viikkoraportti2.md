@@ -20,4 +20,4 @@ Ei nyt tule mitään erityistä mieleen.
 
 ### Mitä teen seuraavaksi?
 
-JUnit yksikkötestaus kunnolla kattavaksi. Koodin kommentointi, JavaDoc, checkstyle ja jacocon konffaukset kuntoon. Ohjelman luokkarakenteen järkeellistäminen. 
+JUnit yksikkötestaus kunnolla kattavaksi. Koodin kommentointi, JavaDoc, checkstyle ja jacocon konffaukset kuntoon. Ohjelman luokkarakenteen järkeellistäminen. Mietitään seuraavat askeleet projektin edistymisen kannalta, mm. mitä muita monimutkaisempia algoritmeja saisi hommaan mukaan (esim. dynaamisesti kasvava luolasto pelaajan liikkumisen mukaan).
