@@ -1,6 +1,6 @@
 package cavegenerator;
 
-import static cavegenerator.Utils.getRandInt;
+import static utils.RandomNumberGenerator.*;
 
 class Leaf {
     int x, y;

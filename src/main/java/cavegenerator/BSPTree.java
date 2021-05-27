@@ -1,8 +1,8 @@
 package cavegenerator;
 
+import game.Tile;
 import java.util.ArrayList;
-
-import static cavegenerator.Utils.getRandInt;
+import static utils.RandomNumberGenerator.*;
 
 public class BSPTree {
     int MAX_LEAF_SIZE;
@@ -10,7 +10,7 @@ public class BSPTree {
     int ROOM_MIN_SIZE;
     int MAP_WIDTH;
     int MAP_HEIGHT;
-    int[][] level;
+    Tile[][] level;
 
     public BSPTree(int MAP_WIDTH, int MAP_HEIGHT, int MAX_LEAF_SIZE, int ROOM_MAX_SIZE, int ROOM_MIN_SIZE) {
         this.MAX_LEAF_SIZE = MAX_LEAF_SIZE;
@@ -18,10 +18,16 @@ public class BSPTree {
         this.ROOM_MIN_SIZE = ROOM_MIN_SIZE;
         this.MAP_WIDTH = MAP_WIDTH;
         this.MAP_HEIGHT = MAP_HEIGHT;
-        level = new int[MAP_WIDTH][MAP_HEIGHT];
+        level = new Tile[MAP_WIDTH][MAP_HEIGHT];
+
+        for (int i = 0; i < MAP_WIDTH; i++) {
+            for (int j = 0; j < MAP_HEIGHT; j++) {
+                level[i][j] = Tile.WALL;
+            }
+        }
     }
 
-    public int[][] generateLevel() {
+    public Tile[][] generateLevel() {
         ArrayList<Leaf> leaves = new ArrayList<>();
         Leaf rootLeaf = new Leaf(0, 0, MAP_WIDTH, MAP_HEIGHT);
         leaves.add(rootLeaf);
@@ -52,7 +58,7 @@ public class BSPTree {
     public void createRoom(Rect room) {
         for (int x = room.x1 + 1; x <= room.x2; x++) {
             for (int y = room.y1 + 1; y <= room.y2; y++) {
-                level[x][y] = 1;
+                level[x][y] = Tile.FLOOR;
             }
         }
     }
@@ -74,13 +80,13 @@ public class BSPTree {
 
     public void createHorTunnel(int x1, int x2, int y) {
         for (int x = Math.min(x1, x2); x <= Math.max(x1, x2) + 1; x++) {
-            level[x][y] = 1;
+            level[x][y] = Tile.FLOOR;
         }
     }
 
     public void createVerTunnel(int y1, int y2, int x) {
         for (int y = Math.min(y1, y2); y <= Math.max(y1, y2) + 1; y++) {
-            level[x][y] = 1;
+            level[x][y] = Tile.FLOOR;
         }
     }
 

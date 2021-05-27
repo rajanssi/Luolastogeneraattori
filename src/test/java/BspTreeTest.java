@@ -1,4 +1,5 @@
 import cavegenerator.BSPTree;
+import game.Tile;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,7 +19,7 @@ public class BspTreeTest {
 
     @Test
     public void generatedLevelsAreCorrectSize() {
-        int[][] level = bsp.generateLevel();
+        Tile[][] level = bsp.generateLevel();
         assertEquals(100, level.length);
         assertEquals(100, level[0].length);
     }
