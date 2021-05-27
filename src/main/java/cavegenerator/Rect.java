@@ -13,8 +13,5 @@ class Rect {
     int centerX() {
         return (x1 + x2) / 2;
     }
-
-    int centerY() {
-        return (y1 + y2) / 2;
-    }
+    int centerY() { return (y1 + y2) / 2; }
 }
