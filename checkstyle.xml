@@ -25,6 +25,23 @@
         </module>
         <module name="NestedTryDepth"/>
 
+        <!-- JavaDox -->
+        <!--
+        <module name="JavadocMethod">
+            <property name="scope" value="public"/>
+            <property name="allowMissingParamTags" value="false"/>
+            <property name="allowMissingPropertyJavadoc" value="true"/>
+            <property name="allowMissingThrowsTags" value="false"/>
+            <property name="allowMissingReturnTag" value="false"/>
+            <property name="allowThrowsTagsForSubclasses" value="true"/>
+        </module>
+
+        <module name="JavadocStyle">
+            <property name="scope" value="public"/>
+            <property name="checkEmptyJavadoc" value="true"/>
+        </module>
+        -->
+
         <!-- Miscellaneous -->
 
         <module name='Indentation' />
@@ -59,20 +76,16 @@
         <module name='EmptyForInitializerPad' />
         <module name='EmptyForIteratorPad' />
         <module name='MethodParamPad' />
-
         <module name='NoWhitespaceAfter'>
             <property name='tokens' value='BNOT, DEC, DOT, INC, LNOT, UNARY_MINUS, UNARY_PLUS' />
         </module>
-
         <module name='NoWhitespaceBefore'>
             <property name='tokens' value='SEMI, DOT, POST_DEC, POST_INC' />
             <property name='allowLineBreaks' value='true' />
         </module>
-
         <module name='ParenPad' />
         <module name='TypecastParenPad' />
         <module name='WhitespaceAfter' />
-
         <module name='WhitespaceAround'>
             <property name='allowEmptyConstructors' value='true' />
             <property name='allowEmptyMethods' value='true' />
@@ -80,7 +93,9 @@
     </module>
 
     <!-- File Length -->
-
+    <module name="SuppressionFilter">
+        <property name="file" value="skipped_files.xml" />
+    </module>
     <module name='FileLength'>
         <property name='max' value='500' />
     </module>

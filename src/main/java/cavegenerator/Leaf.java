@@ -2,10 +2,15 @@ package cavegenerator;
 
 import static utils.RandomNumberGenerator.*;
 
+/**
+ * BSP-puussa käytettävät lehdet toteutettu tämän luokan avulla. Jokaisella lehdellä on potentiaalisesti kaksi lasta
+ * (perustuen binäärihakupuun malliin).
+ *
+ */
 class Leaf {
-    int x, y;
+    private final int minLeafSize = 10;
+    private final int x, y;
     int width, height;
-    int MIN_LEAF_SIZE;
     Leaf child1, child2;
     Rect room, room1, room2;
 
@@ -14,7 +19,8 @@ class Leaf {
         this.y = y;
         this.width = width;
         this.height = height;
-        MIN_LEAF_SIZE = 10;
+        // TODO: Tästä parametri konstruktorille
+        // minLeafSize = 10;
         child1 = null;
         child2 = null;
         room1 = null;
@@ -22,25 +28,29 @@ class Leaf {
     }
 
     boolean splitLeaf() {
-        if (child1 != null || child2 != null)
+        if (child1 != null || child2 != null) {
             return false;
+        }
 
         int max;
         boolean splitHorizontally = getRandInt(0, 1) == 1;
-        if ((double) width / height >= 1.25)
+        if ((double) width / height >= 1.25) {
             splitHorizontally = false;
-        else if ((double) height / width >= 1.25)
+        } else if ((double) height / width >= 1.25) {
             splitHorizontally = true;
+        }
 
-        if (splitHorizontally)
-            max = height - MIN_LEAF_SIZE;
-        else
-            max = width - MIN_LEAF_SIZE;
+        if (splitHorizontally) {
+            max = height - minLeafSize;
+        } else {
+            max = width - minLeafSize;
+        }
 
-        if (max <= MIN_LEAF_SIZE)
+        if (max <= minLeafSize) {
             return false;
+        }
 
-        int split = getRandInt(MIN_LEAF_SIZE, max);
+        int split = getRandInt(minLeafSize, max);
 
         if (splitHorizontally) {
             child1 = new Leaf(x, y, width, split);
@@ -55,36 +65,48 @@ class Leaf {
 
     void createRooms(BSPTree bsp) {
         if (child1 != null || child2 != null) {
-            if (child1 != null)
+            if (child1 != null) {
                 child1.createRooms(bsp);
+            }
 
-            if (child2 != null)
+            if (child2 != null) {
                 child2.createRooms(bsp);
+            }
 
             if (child1 != null && child2 != null) {
                 bsp.createHall(child1.getRoom(), child2.getRoom());
             }
         } else {
-            int w = getRandInt(bsp.ROOM_MIN_SIZE, Math.min(bsp.ROOM_MAX_SIZE, width - 1));
-            int h = getRandInt(bsp.ROOM_MIN_SIZE, Math.min(bsp.ROOM_MAX_SIZE, height - 1));
+            int w = getRandInt(bsp.roomMinSize, Math.min(bsp.roomMaxSize, width - 1));
+            int h = getRandInt(bsp.roomMinSize, Math.min(bsp.roomMaxSize, height - 1));
             int x = getRandInt(this.x, this.x + (width - 1) - w);
             int y = getRandInt(this.y, this.y + (height - 1) - h);
-
             room = new Rect(x, y, w, h);
             bsp.createRoom(room);
         }
     }
 
     Rect getRoom() {
-        if (room != null) return room;
-        else {
-            if (child1 != null) room1 = child1.getRoom();
-            if (child2 != null) room2 = child2.getRoom();
-            if (child1 == null && child2 == null) return null;
-            else if (room2 == null) return room1;
-            else if (room1 == null) return room2;
-            else if (getRandInt(0, 1) == 1) return room1;
-            else return room2;
+        if (room != null) {
+            return room;
+        } else {
+            if (child1 != null) {
+                room1 = child1.getRoom();
+            }
+            if (child2 != null) {
+                room2 = child2.getRoom();
+            }
+            if (child1 == null && child2 == null) {
+                return null;
+            } else if (room2 == null) {
+                return room1;
+            } else if (room1 == null) {
+                return room2;
+            } else if (getRandInt(0, 1) == 1) {
+                return room1;
+            } else {
+                return room2;
+            }
         }
     }
 }

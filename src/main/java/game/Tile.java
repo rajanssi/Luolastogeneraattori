@@ -1,23 +1,34 @@
 package game;
 
 import java.awt.Color;
+
 import asciiPanel.AsciiPanel;
 
 public enum Tile {
-    FLOOR((char)250, AsciiPanel.white),
-    WALL((char)35, AsciiPanel.white),
-    BOUNDS('x', AsciiPanel.brightBlack);
+    FLOOR((char) 250, AsciiPanel.white),
+    WALL('#', AsciiPanel.white),
+    ROOMWALL('#', AsciiPanel.white),
+    BOUNDS('x', AsciiPanel.brightBlack),
+    DOOR('D', AsciiPanel.white);
 
-    private char glyph;
-    public char glyph() { return glyph; }
+    private final char symbol;
+    private final Color color;
 
-    private Color color;
-    public Color color() { return color; }
-
-    Tile(char glyph, Color color){
-        this.glyph = glyph;
+    Tile(char symbol, Color color) {
+        this.symbol = symbol;
         this.color = color;
     }
 
+    public char getSymbol() {
+        return symbol;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public boolean isWalkable() {
+        return this != WALL && this != ROOMWALL && this != BOUNDS;
+    }
 }
 

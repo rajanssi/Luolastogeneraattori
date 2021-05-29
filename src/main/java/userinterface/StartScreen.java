@@ -6,11 +6,18 @@ import asciiPanel.AsciiPanel;
 public class StartScreen implements Screen {
 
     public void displayOutput(AsciiPanel terminal) {
-        terminal.write("rl tutorial", 1, 1);
-        terminal.writeCenter("-- press [enter] to start --", 22);
+        terminal.writeCenter("Luolastopeli", 11);
+        terminal.writeCenter("-- paina [enter] aloittaaksesi --", 21);
+        terminal.writeCenter("-- paina [esc] poistuaksesi --", 22);
     }
 
     public Screen respondToUserInput(KeyEvent key) {
-        return key.getKeyCode() == KeyEvent.VK_ENTER ? new PlayScreen() : this;
+        switch (key.getKeyCode()) {
+            case KeyEvent.VK_ESCAPE:
+                System.exit(0);
+            case KeyEvent.VK_ENTER:
+                return new PlayScreen();
+        }
+        return this;
     }
 }

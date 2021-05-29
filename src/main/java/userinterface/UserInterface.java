@@ -1,5 +1,0 @@
-package userinterface;
-
-class UserInterface {
-
-}

@@ -2,9 +2,12 @@ package game;
 
 import cavegenerator.BSPTree;
 
+/**
+ * Luo uuden pelimaailman annettujen parametrien ja BSP algoritmin generoimien ruutujen perusteella
+ */
 public class WorldBuilder {
-    private int width;
-    private int height;
+    private final int width;
+    private final int height;
     private Tile[][] tiles;
 
     public WorldBuilder(int width, int height) {
@@ -17,8 +20,9 @@ public class WorldBuilder {
         return new World(tiles);
     }
 
+    // TODO: BSP-puulle annettavat arvot parametreina?
     public WorldBuilder makeCaves() {
-        BSPTree bsp = new BSPTree(width, height, 24, 15, 6);
+        BSPTree bsp = new BSPTree(width, height, 24, 12, 8);
         tiles = bsp.generateLevel();
         return this;
     }
