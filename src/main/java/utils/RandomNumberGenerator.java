@@ -7,7 +7,7 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class RandomNumberGenerator {
 
-    // TODO: Tee tähän Mersenne-Twister
+    // TODO: Tee tähän esim. Mersenne-Twister
     public static int getRandInt(int min, int max) {
         return ThreadLocalRandom.current().nextInt(min, max + 1);
     }

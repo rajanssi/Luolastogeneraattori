@@ -7,14 +7,14 @@ import static utils.RandomNumberGenerator.*;
  * (perustuen binäärihakupuun malliin).
  *
  */
-class Leaf {
+public class Leaf {
     private final int minLeafSize = 10;
     private final int x, y;
     int width, height;
     Leaf child1, child2;
     Rect room, room1, room2;
 
-    Leaf(int x, int y, int width, int height) {
+    public Leaf(int x, int y, int width, int height) {
         this.x = x;
         this.y = y;
         this.width = width;
@@ -27,7 +27,7 @@ class Leaf {
         room2 = null;
     }
 
-    boolean splitLeaf() {
+    public boolean splitLeaf() {
         if (child1 != null || child2 != null) {
             return false;
         }
@@ -63,7 +63,7 @@ class Leaf {
         return true;
     }
 
-    void createRooms(BSPTree bsp) {
+    public void createRooms(BSPTree bsp) {
         if (child1 != null || child2 != null) {
             if (child1 != null) {
                 child1.createRooms(bsp);
@@ -86,7 +86,7 @@ class Leaf {
         }
     }
 
-    Rect getRoom() {
+    public Rect getRoom() {
         if (room != null) {
             return room;
         } else {

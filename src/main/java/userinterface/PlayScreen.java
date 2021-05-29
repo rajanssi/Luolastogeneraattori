@@ -23,8 +23,8 @@ public class PlayScreen implements Screen {
     }
 
     private void createWorld(){
-        world = new WorldBuilder(80, 20)
-                .makeCaves()
+        world = new WorldBuilder(10000, 10000)
+                .makeRooms()
                 .build();
     }
 

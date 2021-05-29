@@ -21,7 +21,7 @@ public class WorldBuilder {
     }
 
     // TODO: BSP-puulle annettavat arvot parametreina?
-    public WorldBuilder makeCaves() {
+    public WorldBuilder makeRooms() {
         BSPTree bsp = new BSPTree(width, height, 24, 12, 8);
         tiles = bsp.generateLevel();
         return this;
