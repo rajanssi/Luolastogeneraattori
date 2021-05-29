@@ -6,6 +6,7 @@
 
 [Viikko 2](https://github.com/rajanssi/Luolastogeneraattori/blob/main/dokumentaatio/viikoraportit/viikkoraportti2.md)
 
+[Viikko 3](https://github.com/rajanssi/Luolastogeneraattori/blob/main/dokumentaatio/viikoraportit/viikkoraportti3.md)
 
 ## Dokumentaatio
 
