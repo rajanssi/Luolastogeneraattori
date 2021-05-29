@@ -15,15 +15,15 @@ public class PlayScreen implements Screen {
     private Character player;
 
     public PlayScreen(){
-        screenWidth = 80;
-        screenHeight = 24;
+        screenWidth = 100;
+        screenHeight = 40;
         createWorld();
         characterFactory = new CharacterFactory(world);
         player = characterFactory.newPlayer();
     }
 
     private void createWorld(){
-        world = new WorldBuilder(10000, 10000)
+        world = new WorldBuilder(50, 50)
                 .makeRooms()
                 .build();
     }
