@@ -1,9 +1,11 @@
 package game;
 
 import java.awt.Color;
-
 import asciiPanel.AsciiPanel;
 
+/**
+ * Määrittelee ruudut, joista pelimaailma koostuu.
+ */
 public enum Tile {
     FLOOR((char) 250, AsciiPanel.white),
     WALL('#', AsciiPanel.white),

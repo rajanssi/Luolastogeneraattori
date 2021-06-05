@@ -1,23 +1,15 @@
-import asciiPanel.AsciiPanel;
-import game.Character;
-import game.CharacterFactory;
-import game.Tile;
 import game.World;
-import game.WorldBuilder;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class WorldTest {
-    static WorldBuilder b;
     static World w;
 
     @BeforeClass
     public static void setUpClass() {
-        b = new WorldBuilder(100, 100);
-        b.makeRooms();
-        w = b.build();
+        w = new World(40, 40);
     }
 
     @Test
@@ -27,10 +19,14 @@ public class WorldTest {
     }
 
     @Test
-    public void characterIsNotPlacedInAWall() {
-        Character c = new Character(w, '@', AsciiPanel.brightWhite);
-        w.addAtEmptyLocation(c);
-        assertTrue(w.tile(c.getX(), c.getY()).isWalkable());
+    public void canAddCharacters() {
+        w.addEnemies();
+        assertEquals(1, w.getCharacters().size());
     }
 
+    @Test
+    public void canGrowWorld() {
+        w.growWorld(40);
+        assertEquals(80, w.getWidth());
+    }
 }

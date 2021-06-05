@@ -7,20 +7,17 @@ import static utils.RandomNumberGenerator.*;
  * (perustuen binäärihakupuun malliin).
  *
  */
-public class Leaf {
-    private final int minLeafSize = 10;
+class Leaf {
     private final int x, y;
-    int width, height;
+    final int width, height;
     Leaf child1, child2;
-    Rect room, room1, room2;
+    Room room, room1, room2;
 
     public Leaf(int x, int y, int width, int height) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
-        // TODO: Tästä parametri konstruktorille
-        // minLeafSize = 10;
         child1 = null;
         child2 = null;
         room1 = null;
@@ -40,6 +37,7 @@ public class Leaf {
             splitHorizontally = true;
         }
 
+        int minLeafSize = 10;
         if (splitHorizontally) {
             max = height - minLeafSize;
         } else {
@@ -74,19 +72,20 @@ public class Leaf {
             }
 
             if (child1 != null && child2 != null) {
-                bsp.createHall(child1.getRoom(), child2.getRoom());
+                FloorGenerator.createHall(child1.getRoom(), child2.getRoom(), bsp.getLevel());
             }
         } else {
             int w = getRandInt(bsp.roomMinSize, Math.min(bsp.roomMaxSize, width - 1));
             int h = getRandInt(bsp.roomMinSize, Math.min(bsp.roomMaxSize, height - 1));
             int x = getRandInt(this.x, this.x + (width - 1) - w);
             int y = getRandInt(this.y, this.y + (height - 1) - h);
-            room = new Rect(x, y, w, h);
-            bsp.createRoom(room);
+            room = new Room(x, y, w, h);
+            bsp.getRooms().add(room);
+            FloorGenerator.createRoom(room, bsp.getLevel());
         }
     }
 
-    public Rect getRoom() {
+    public Room getRoom() {
         if (room != null) {
             return room;
         } else {

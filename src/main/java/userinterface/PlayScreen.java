@@ -3,29 +3,26 @@ package userinterface;
 import java.awt.event.KeyEvent;
 import asciiPanel.AsciiPanel;
 import game.Character;
-import game.CharacterFactory;
 import game.World;
-import game.WorldBuilder;
 
 public class PlayScreen implements Screen {
-    final private int screenWidth;
-    final private int screenHeight;
-    private CharacterFactory characterFactory;
-    private World world;
-    private Character player;
+    private final int screenWidth;
+    private final int screenHeight;
+    private final World world;
+    private final Character player;
 
     public PlayScreen(){
-        screenWidth = 100;
-        screenHeight = 40;
-        createWorld();
-        characterFactory = new CharacterFactory(world);
-        player = characterFactory.newPlayer();
+        screenWidth = 150;
+        screenHeight = 50;
+        world = new World(50, 50).build();
+        player = world.addPlayer();
     }
 
-    private void createWorld(){
-        world = new WorldBuilder(50, 50)
-                .makeRooms()
-                .build();
+    private void growWorld() {
+        world.growWorld(40);
+        for (Character c : world.getCharacters()) {
+            c.updateWorld(world);
+        }
     }
 
     public void displayOutput(AsciiPanel terminal) {
@@ -33,10 +30,8 @@ public class PlayScreen implements Screen {
         int top = getScrollY();
 
         displayTiles(terminal, left, top);
-        terminal.write(player.getSymbol(), player.getX() - left, player.getY() - top, player.getColor());
         terminal.write("Enter luo uuden luolaston!", 1, 22);
         terminal.write("Esc palaa alkuruutuun!", 1, 23);
-
     }
 
     public Screen respondToUserInput(KeyEvent key) {
@@ -44,23 +39,44 @@ public class PlayScreen implements Screen {
             case KeyEvent.VK_ESCAPE:
                 return new StartScreen();
             case KeyEvent.VK_ENTER:
-                createWorld();
-                characterFactory = new CharacterFactory(world);
-                player = characterFactory.newPlayer();
-                break;
+                return new PlayScreen();
             case KeyEvent.VK_LEFT:
-            case KeyEvent.VK_H: player.moveBy(-1, 0); break;
+            case KeyEvent.VK_H:
+                player.moveBy(-1, 0);
+                break;
             case KeyEvent.VK_RIGHT:
-            case KeyEvent.VK_L: player.moveBy( 1, 0); break;
+            case KeyEvent.VK_L:
+                player.moveBy( 1, 0);
+                break;
             case KeyEvent.VK_UP:
-            case KeyEvent.VK_K: player.moveBy( 0,-1); break;
+            case KeyEvent.VK_K:
+                player.moveBy( 0,-1);
+                break;
             case KeyEvent.VK_DOWN:
-            case KeyEvent.VK_J: player.moveBy( 0, 1); break;
-            case KeyEvent.VK_Y: player.moveBy(-1,-1); break;
-            case KeyEvent.VK_U: player.moveBy( 1,-1); break;
-            case KeyEvent.VK_B: player.moveBy(-1, 1); break;
-            case KeyEvent.VK_N: player.moveBy( 1, 1); break;
+            case KeyEvent.VK_J:
+                player.moveBy( 0, 1);
+                break;
+            case KeyEvent.VK_Y:
+                player.moveBy(-1,-1);
+                break;
+            case KeyEvent.VK_U:
+                player.moveBy( 1,-1);
+                break;
+            case KeyEvent.VK_B:
+                player.moveBy(-1, 1);
+                break;
+            case KeyEvent.VK_N:
+                player.moveBy( 1, 1);
+                break;
+            case KeyEvent.VK_SPACE: growWorld(); break;
         }
+
+        if (world.getWidth() - player.getX() < 10) {
+            growWorld();
+        }
+
+        world.updateWorld();
+
         return this;
     }
 
@@ -81,6 +97,13 @@ public class PlayScreen implements Screen {
                 terminal.write(world.getSymbol(wx, wy), x, y, world.getColor(wx, wy));
             }
         }
+
+        for (Character c : world.getCharacters()) {
+            if (c.getX() > left && c.getX() < screenWidth + left) {
+                terminal.write(c.getSymbol(), c.getX() - left, c.getY() - top, c.getColor());
+            }
+        }
+
     }
 }
 

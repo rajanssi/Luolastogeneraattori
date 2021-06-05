@@ -1,9 +1,5 @@
 import cavegenerator.BSPTree;
-import cavegenerator.Leaf;
 import game.Tile;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -12,12 +8,10 @@ import static org.junit.Assert.*;
 
 public class BSPTest {
     static BSPTree bsp;
-    static Leaf l;
 
     @BeforeClass
     public static void setUpClass() {
         bsp = new BSPTree(100, 100, 20, 12, 6);
-        l = new Leaf(20, 20, 5, 6);
     }
 
     @Test

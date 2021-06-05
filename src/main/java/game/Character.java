@@ -2,10 +2,14 @@ package game;
 
 import java.awt.*;
 
+/**
+ * Määrittelee pelihahmo-olion ja mm. sen sijainnin pelimaailmassa, tekoälyn ja ulkonäön
+ */
 public class Character {
-    private final World world;
+    private World world;
     private final char symbol;
     private final Color color;
+    private CharacterAi ai;
     private int x;
     private int y;
 
@@ -48,5 +52,17 @@ public class Character {
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    public void updateWorld(World w) {
+        this.world = w;
+    }
+
+    public void setAi(CharacterAi ai) {
+        this.ai = ai;
+    }
+
+    public CharacterAi getAi() {
+        return ai;
     }
 }
