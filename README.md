@@ -8,6 +8,8 @@
 
 [Viikko 3](https://github.com/rajanssi/Luolastogeneraattori/blob/main/dokumentaatio/viikoraportit/viikkoraportti3.md)
 
+[Viikko 4](https://github.com/rajanssi/Luolastogeneraattori/blob/main/dokumentaatio/viikoraportit/viikkoraportti4.md)
+
 ## Dokumentaatio
 
 [Määrittelydokumentti](https://github.com/rajanssi/Luolastogeneraattori/blob/main/dokumentaatio/maarittelydokumentti.md)
