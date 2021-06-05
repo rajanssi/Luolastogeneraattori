@@ -5,7 +5,7 @@ Käytetty tuntimäärä: 15
 ### Mitä olen tehnyt tällä viikolla?
 
 Käyttöliittymäkirjasto tuli vaihdettua Zirconista [AsciiPaneliin](https://github.com/trystan/AsciiPanel), koska jälkimmäisen käyttö on yksinkertaisempaa. Ulkoasu on vähän 
-tylsempi, mutta tähän projektiin ihan riittävän hyvä. Ohjelman luokkarakenne on nyt selkeämpi ja testaukset ovat edistyneet. Myös koodin kommentointia on aloiteltu.
+tylsempi, mutta tähän projektiin ihan riittävän hyvä. Ohjelman luokkarakenne on nyt selkeämpi ja testaukset ovat edistyneet. Myös koodin kommentointia on aloiteltu. Checkstyle ja testauskattavuuden seuranta on nyt konfiguroitu.
 
 ### Miten ohjelma on edistynyt?
 
