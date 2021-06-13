@@ -4,7 +4,7 @@ Käytetty tuntimäärä: 10
 
 ### Mitä olen tehnyt tällä viikolla?
 
-Vertaisarviointi, oman satunnaislukugeneraattorin ja taulukkolistan toteutus, polun etsimien Dijkstran algoritmilla. 
+Vertaisarviointi, oman satunnaislukugeneraattorin ja taulukkolistan toteutus, polun etsimien Dijkstran algoritmilla. Pusketaan vielä vaikka tässä illan aikan nämä repoon toiselta koneelta ja yhdistellään niitä (asioita on tällä viikolla tehty vähän eri paikoisssa eri laitteilla).
 
 ### Miten ohjelma on edistynyt?
 
