@@ -1,8 +1,11 @@
 package userinterface;
 
+import java.awt.*;
 import java.awt.event.KeyEvent;
+
 import asciiPanel.AsciiPanel;
 import game.Character;
+import game.Tile;
 import game.World;
 
 public class PlayScreen implements Screen {
@@ -11,7 +14,7 @@ public class PlayScreen implements Screen {
     private final World world;
     private final Character player;
 
-    public PlayScreen(){
+    public PlayScreen() {
         screenWidth = 150;
         screenHeight = 50;
         world = new World(50, 50).build();
@@ -30,12 +33,16 @@ public class PlayScreen implements Screen {
         int top = getScrollY();
 
         displayTiles(terminal, left, top);
-        terminal.write("Enter luo uuden luolaston!", 1, 22);
-        terminal.write("Esc palaa alkuruutuun!", 1, 23);
+        String stats = String.format(" %3d/%3d hp", player.getHp(), 5);
+        String location = String.format(" %3d x %3d y", player.getX(), player.getY());
+        terminal.write("Enter luo uuden luolaston!", 1, screenHeight - 1);
+        terminal.write("Esc palaa alkuruutuun!", 1, screenHeight - 2);
+        terminal.write(stats, 1, screenHeight - 3);
+        terminal.write(location, 1, screenHeight - 4);
     }
 
     public Screen respondToUserInput(KeyEvent key) {
-        switch (key.getKeyCode()){
+        switch (key.getKeyCode()) {
             case KeyEvent.VK_ESCAPE:
                 return new StartScreen();
             case KeyEvent.VK_ENTER:
@@ -46,29 +53,31 @@ public class PlayScreen implements Screen {
                 break;
             case KeyEvent.VK_RIGHT:
             case KeyEvent.VK_L:
-                player.moveBy( 1, 0);
+                player.moveBy(1, 0);
                 break;
             case KeyEvent.VK_UP:
             case KeyEvent.VK_K:
-                player.moveBy( 0,-1);
+                player.moveBy(0, -1);
                 break;
             case KeyEvent.VK_DOWN:
             case KeyEvent.VK_J:
-                player.moveBy( 0, 1);
+                player.moveBy(0, 1);
                 break;
             case KeyEvent.VK_Y:
-                player.moveBy(-1,-1);
+                player.moveBy(-1, -1);
                 break;
             case KeyEvent.VK_U:
-                player.moveBy( 1,-1);
+                player.moveBy(1, -1);
                 break;
             case KeyEvent.VK_B:
                 player.moveBy(-1, 1);
                 break;
             case KeyEvent.VK_N:
-                player.moveBy( 1, 1);
+                player.moveBy(1, 1);
                 break;
-            case KeyEvent.VK_SPACE: growWorld(); break;
+            case KeyEvent.VK_SPACE:
+                player.moveBy(0, 0);
+                break;
         }
 
         if (world.getWidth() - player.getX() < 10) {
@@ -89,12 +98,17 @@ public class PlayScreen implements Screen {
     }
 
     private void displayTiles(AsciiPanel terminal, int left, int top) {
-        for (int x = 0; x < screenWidth; x++){
-            for (int y = 0; y < screenHeight; y++){
+        for (int x = 0; x < screenWidth; x++) {
+            for (int y = 0; y < screenHeight; y++) {
                 int wx = x + left;
                 int wy = y + top;
-
-                terminal.write(world.getSymbol(wx, wy), x, y, world.getColor(wx, wy));
+                Tile t = world.getTile(wx, wy);
+                if (Math.abs(Math.abs(player.getX() - x)) < 10 && Math.abs(player.getY() - y) < 10) {
+                    t.setVisible(true);
+                } else {
+                    t.setVisible(false);
+                }
+                terminal.write(t.getSymbol(), x, y, t.getColor());
             }
         }
 

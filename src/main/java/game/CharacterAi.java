@@ -1,5 +1,7 @@
 package game;
 
+import java.awt.*;
+
 import static utils.RandomNumberGenerator.getRandInt;
 
 /**
@@ -18,6 +20,16 @@ public class CharacterAi {
         int my = getRandInt(0, 2) - 1;
 
         character.moveBy(mx, my);
+    }
+
+    public void seek(Character other, World w) {
+        character.setColor(Color.GREEN);
+        //new Pathfinder(w, character, other);
+    }
+
+    public boolean withinReach(Character other) {
+
+        return Math.abs(other.getX() - this.character.getX()) < 5 && Math.abs(other.getY() - this.character.getY()) < 5;
     }
 
 }

@@ -15,10 +15,12 @@ public enum Tile {
 
     private final char symbol;
     private final Color color;
+    private boolean visible;
 
     Tile(char symbol, Color color) {
         this.symbol = symbol;
         this.color = color;
+        this.visible = false;
     }
 
     public char getSymbol() {
@@ -26,8 +28,20 @@ public enum Tile {
     }
 
     public Color getColor() {
-        return color;
+        if (visible && symbol != 'x') {
+            return color;
+        }
+        return Color.DARK_GRAY;
     }
+
+    public void setVisible(boolean b) {
+        this.visible = b;
+    }
+
+    public boolean isVisible() {
+        return this.visible;
+    }
+
 
     public boolean isWalkable() {
         return this != WALL && this != ROOMWALL && this != BOUNDS;

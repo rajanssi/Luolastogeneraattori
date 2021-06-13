@@ -52,7 +52,7 @@ public class FloorGenerator {
             }
             if (level[x][y] == Tile.ROOMWALL && level[x - 1][y] != Tile.ROOMWALL && level[x + 1][y] != Tile.ROOMWALL) {
                 level[x][y] = Tile.DOOR;
-            } else if (level[x][y] != Tile.DOOR && level[x][y - 1] != Tile.DOOR && level[x][y + 1] != Tile.DOOR){
+            } else if (level[x][y] != Tile.DOOR && level[x][y - 1] != Tile.DOOR && level[x][y + 1] != Tile.DOOR) {
                 level[x][y] = Tile.FLOOR;
             }
         }
@@ -69,7 +69,7 @@ public class FloorGenerator {
             }
             if (level[x][y] == Tile.ROOMWALL && level[x][y - 1] != Tile.ROOMWALL && level[x][y + 1] != Tile.ROOMWALL) {
                 level[x][y] = Tile.DOOR;
-            } else if (level[x][y] != Tile.DOOR && level[x - 1][y] != Tile.DOOR && level[x + 1][y] != Tile.DOOR){
+            } else if (level[x][y] != Tile.DOOR && level[x - 1][y] != Tile.DOOR && level[x + 1][y] != Tile.DOOR) {
                 level[x][y] = Tile.FLOOR;
             }
         }

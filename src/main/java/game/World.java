@@ -3,6 +3,7 @@ package game;
 import asciiPanel.AsciiPanel;
 import cavegenerator.BSPTree;
 import cavegenerator.Room;
+
 import java.awt.Color;
 import java.util.ArrayList;
 
@@ -19,8 +20,10 @@ public class World {
     private int height;
     private Tile[][] tiles;
     private BSPTree bsp;
+    private Character player;
     private final ArrayList<Room> rooms;
     private final ArrayList<Character> characters;
+    private int turn;
 
     public World(int width, int height) {
         this.width = width;
@@ -28,6 +31,8 @@ public class World {
         this.rooms = new ArrayList<>();
         this.characters = new ArrayList<>();
         this.bsp = new BSPTree(width, height, 24, 12, 8);
+        this.turn = 1;
+        this.player = null;
     }
 
     public Tile tile(int x, int y) {
@@ -54,6 +59,19 @@ public class World {
         return tile(x, y).getColor();
     }
 
+    public Tile getTile(int x, int y) {
+        return tile(x, y);
+    }
+
+    public Character getCharacter(int x, int y) {
+        for (Character c : characters) {
+            if (c.getX() == x && c.getY() == y) {
+                return c;
+            }
+        }
+        return null;
+    }
+
     public ArrayList<Character> getCharacters() {
         return this.characters;
     }
@@ -74,8 +92,8 @@ public class World {
     }
 
     public Character addPlayer() {
-        Room r = rooms.get(getRandInt(0, rooms.size() - 1));
-        Character player = new Character(this, '@', AsciiPanel.brightWhite);
+        Room r = rooms.get(0);
+        this.player = new Character(this, '@', AsciiPanel.brightWhite);
         addAtEmptyLocation(player, r);
         return player;
     }
@@ -83,7 +101,7 @@ public class World {
     public void addEnemies() {
         for (Room r : bsp.getRooms()) {
             if (getRandInt(0, 5) == 1) {
-                Character c = new Character(this, '!', AsciiPanel.brightWhite);
+                Character c = new Character(this, 'X', AsciiPanel.brightWhite);
                 new CharacterAi(c);
                 addAtEmptyLocation(c, r);
             }
@@ -93,9 +111,18 @@ public class World {
     public void updateWorld() {
         for (Character c : characters) {
             if (c.getSymbol() != '@') {
-                c.getAi().moveAround();
+                if (c.getHp() < 1) {
+                    characters.remove(c);
+                    break;
+                }
+                if (c.getAi().withinReach(player) && turn % 2 == 0) {
+                    c.getAi().seek(player, this);
+                } else if (turn % 2 == 0) {
+                    c.getAi().moveAround();
+                }
             }
         }
+        turn++;
     }
 
     public void growWorld(int horizontalGrowth) {
