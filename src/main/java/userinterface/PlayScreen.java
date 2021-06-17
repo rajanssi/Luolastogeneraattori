@@ -103,11 +103,7 @@ public class PlayScreen implements Screen {
                 int wx = x + left;
                 int wy = y + top;
                 Tile t = world.getTile(wx, wy);
-                if (Math.abs(Math.abs(player.getX() - x)) < 10 && Math.abs(player.getY() - y) < 10) {
-                    t.setVisible(true);
-                } else {
-                    t.setVisible(false);
-                }
+                t.setVisible(true);
                 terminal.write(t.getSymbol(), x, y, t.getColor());
             }
         }

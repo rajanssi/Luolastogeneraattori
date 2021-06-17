@@ -3,8 +3,6 @@ package game;
 import asciiPanel.AsciiPanel;
 import cavegenerator.BSPTree;
 import cavegenerator.Room;
-
-import java.awt.Color;
 import java.util.ArrayList;
 
 import static cavegenerator.FloorGenerator.connectTrees;
@@ -51,19 +49,12 @@ public class World {
         return height;
     }
 
-    public char getSymbol(int x, int y) {
-        return tile(x, y).getSymbol();
-    }
-
-    public Color getColor(int x, int y) {
-        return tile(x, y).getColor();
-    }
-
     public Tile getTile(int x, int y) {
         return tile(x, y);
     }
 
     public Character getCharacter(int x, int y) {
+        // TODO: Tähän oma ArrayList toteutus
         for (Character c : characters) {
             if (c.getX() == x && c.getY() == y) {
                 return c;
@@ -99,8 +90,9 @@ public class World {
     }
 
     public void addEnemies() {
+        // TODO: Tähän oma ArrayList toteutus
         for (Room r : bsp.getRooms()) {
-            if (getRandInt(0, 5) == 1) {
+            if (getRandInt(0, 2) == 1) {
                 Character c = new Character(this, 'X', AsciiPanel.brightWhite);
                 new CharacterAi(c);
                 addAtEmptyLocation(c, r);
@@ -109,6 +101,7 @@ public class World {
     }
 
     public void updateWorld() {
+        // TODO: Tähän oma ArrayList toteutus (removen kera)
         for (Character c : characters) {
             if (c.getSymbol() != '@') {
                 if (c.getHp() < 1) {
@@ -140,7 +133,7 @@ public class World {
             }
         }
         tiles = temp;
-
+        // TODO: Tähän oma ArrayList toteutus
         for (Room r : bsp.getRooms()) {
             r.x1 += width;
             r.x2 += width;
@@ -154,6 +147,7 @@ public class World {
 
     public World build() {
         this.tiles = bsp.generateLevel();
+        // TODO: Tähän oma ArrayList toteutus
         for (Room r : bsp.getRooms()) {
             rooms.add(r);
         }

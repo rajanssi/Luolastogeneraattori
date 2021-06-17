@@ -14,7 +14,7 @@ public enum Tile {
     DOOR('D', AsciiPanel.white);
 
     private final char symbol;
-    private final Color color;
+    private Color color;
     private boolean visible;
 
     Tile(char symbol, Color color) {

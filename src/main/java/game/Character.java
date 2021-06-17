@@ -72,6 +72,11 @@ public class Character {
         return this.hp;
     }
 
+    /**
+     * Liikkuu annettujen parametrien mukaiseen ruutuun. Mikäli ruudussa on toinen hahmo, hyökkää sitä vastaan.
+     * @param mx
+     * @param my
+     */
     public void moveBy(int mx, int my) {
         Character o = world.getCharacter(x+mx, y+my);
 
@@ -83,6 +88,12 @@ public class Character {
 
     }
 
+    /**
+     * Tarkistaa, voiko ruutuun siirtyä.
+     * @param x
+     * @param y
+     * @param tile
+     */
     public void onEnter(int x, int y, Tile tile) {
         if (tile == Tile.DOOR && this.ai != null) {
             return;
@@ -94,10 +105,18 @@ public class Character {
         }
     }
 
+    /**
+     * Hyökkää toista pelihahmoa vastan ja vähentää tämän elinvoimaa.
+     * @param o Toinen pelihahmo
+     */
     public void attack(Character o) {
         o.setHp(o.getHp() - 1);
     }
 
+    /**
+     * Päivittää pelimaailman tilan tällä hahomlle
+     * @param w Tämän hahmon pelimaailma
+     */
     public void updateWorld(World w) {
         this.world = w;
     }

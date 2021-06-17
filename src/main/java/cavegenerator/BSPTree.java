@@ -8,7 +8,6 @@ import static utils.RandomNumberGenerator.*;
 /**
  * BSP-puu tietorakenne, joka sisältää mm. algoritmin tason luomiselle
  */
-// TODO: Tunneloinnit eri luokkaan/pakettiin, koska ne eivät varsinaisesti ole osa algoritmia?
 public class BSPTree {
     private final int maxLeafSize;
     private final int mapWidth;
@@ -64,8 +63,6 @@ public class BSPTree {
      * @return Palauttaa kaksiuloitteisen taulukon joka sisältää informaation pelin tason ruuduista
      */
     public Tile[][] generateLevel() {
-        // TODO: Oma ArrayList toteutus tähän
-
         Leaf rootLeaf = new Leaf(0, 0, mapWidth, mapHeight);
         leaves.add(rootLeaf);
 
@@ -79,6 +76,7 @@ public class BSPTree {
         return level;
     }
 
+    // TODO: Oma ArrayList toteutus tähän - muokkaa World luokan for-silmukoita
     public ArrayList<Room> getRooms() {
         return rooms;
     }
