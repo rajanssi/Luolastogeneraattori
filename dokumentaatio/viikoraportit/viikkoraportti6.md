@@ -1,4 +1,4 @@
-# Viikkoraportti 7.6-13.6
+# Viikkoraportti 14.6-20.6
 
 Käytetty tuntimäärä: 15h
 
