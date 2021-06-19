@@ -12,6 +12,8 @@
 
 [Viikko 5](https://github.com/rajanssi/Luolastogeneraattori/blob/main/dokumentaatio/viikoraportit/viikkoraportti5.md)
 
+[Viikko 6](https://github.com/rajanssi/Luolastogeneraattori/blob/main/dokumentaatio/viikoraportit/viikkoraportti6.md)
+
 ## Dokumentaatio
 
 [Määrittelydokumentti](https://github.com/rajanssi/Luolastogeneraattori/blob/main/dokumentaatio/maarittelydokumentti.md)
