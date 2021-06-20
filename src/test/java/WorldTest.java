@@ -9,19 +9,19 @@ public class WorldTest {
 
     @BeforeClass
     public static void setUpClass() {
-        w = new World(40, 40);
+        w = new World(40, 40).build();
     }
 
     @Test
     public void canBuildWorldOfCorrectSize() {
-        assertEquals(100, w.getWidth());
-        assertEquals(100, w.getHeight());
+        assertEquals(40, w.getWidth());
+        assertEquals(40, w.getHeight());
     }
 
     @Test
     public void canAddCharacters() {
-        w.addEnemies();
-        assertEquals(1, w.getCharacters().size());
+        w.addPlayer();
+        assertNotNull(w.getCharacters().get(0));
     }
 
     @Test

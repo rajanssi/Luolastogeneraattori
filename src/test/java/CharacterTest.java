@@ -10,7 +10,7 @@ public class CharacterTest {
 
     @BeforeClass
     public static void setUpClass() {
-        w = new World(40, 40);
+        w = new World(40, 40).build();
     }
 
     @Test
@@ -22,7 +22,11 @@ public class CharacterTest {
     @Test
     public void nonPlayerCharacterHasAi() {
         w.addEnemies();
-        Character c = w.getCharacters().get(0);
+        Character c = null;
+        do {
+            c = w.getCharacters().get(1);
+        }
+        while (c == null);
         assertNotNull(c.getAi());
     }
 

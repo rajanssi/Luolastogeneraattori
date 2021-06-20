@@ -1,6 +1,5 @@
 package userinterface;
 
-import java.awt.*;
 import java.awt.event.KeyEvent;
 
 import asciiPanel.AsciiPanel;
@@ -23,9 +22,11 @@ public class PlayScreen implements Screen {
 
     private void growWorld() {
         world.growWorld(40);
-        for (Character c : world.getCharacters()) {
+        for (int i = 0; i < world.getCharacters().size(); i++) {
+            Character c = world.getCharacters().get(i);
             c.updateWorld(world);
         }
+
     }
 
     public void displayOutput(AsciiPanel terminal) {
@@ -103,12 +104,11 @@ public class PlayScreen implements Screen {
                 int wx = x + left;
                 int wy = y + top;
                 Tile t = world.getTile(wx, wy);
-                t.setVisible(true);
                 terminal.write(t.getSymbol(), x, y, t.getColor());
             }
         }
-
-        for (Character c : world.getCharacters()) {
+        for (int i = 0; i < world.getCharacters().size(); i++) {
+            Character c = world.getCharacters().get(i);
             if (c.getX() > left && c.getX() < screenWidth + left) {
                 terminal.write(c.getSymbol(), c.getX() - left, c.getY() - top, c.getColor());
             }

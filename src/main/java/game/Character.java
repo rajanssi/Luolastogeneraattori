@@ -1,6 +1,7 @@
 package game;
 
 import java.awt.*;
+import java.util.Objects;
 
 /**
  * Määrittelee pelihahmo-olion ja mm. sen sijainnin pelimaailmassa, tekoälyn ja ulkonäön
@@ -15,6 +16,13 @@ public class Character {
     private int x;
     private int y;
 
+    /**
+     * Konstruktori ottaa maailman, johon hahmo luodaan, hahmon ASCII symbolin ja värin
+     *
+     * @param world Maailma, johon hahmo luodaan
+     * @param symbol Hahmon käyttöliittymässä näytettävä ASCII symboli
+     * @param color Hahmon väri käyttöliittymässä
+     */
     public Character(World world, char symbol, Color color) {
         this.world = world;
         this.symbol = symbol;
@@ -74,11 +82,12 @@ public class Character {
 
     /**
      * Liikkuu annettujen parametrien mukaiseen ruutuun. Mikäli ruudussa on toinen hahmo, hyökkää sitä vastaan.
-     * @param mx
-     * @param my
+     *
+     * @param mx Kuinka paljon liikutaan x-akselilla
+     * @param my Kuinka paljon liikutaan y-akselilla
      */
     public void moveBy(int mx, int my) {
-        Character o = world.getCharacter(x+mx, y+my);
+        Character o = world.getCharacter(x + mx, y + my);
 
         if (o == null || o == this) {
             onEnter(getX() + mx, getY() + my, world.tile(getX() + mx, getY() + my));
@@ -90,9 +99,10 @@ public class Character {
 
     /**
      * Tarkistaa, voiko ruutuun siirtyä.
-     * @param x
-     * @param y
-     * @param tile
+     *
+     * @param x Ruutu johon siirrytään x-akselilla
+     * @param y Ruutu johon siirrytään y-akselilla
+     * @param tile Siirryttävä ruutu
      */
     public void onEnter(int x, int y, Tile tile) {
         if (tile == Tile.DOOR && this.ai != null) {
@@ -107,6 +117,7 @@ public class Character {
 
     /**
      * Hyökkää toista pelihahmoa vastan ja vähentää tämän elinvoimaa.
+     *
      * @param o Toinen pelihahmo
      */
     public void attack(Character o) {
@@ -115,9 +126,23 @@ public class Character {
 
     /**
      * Päivittää pelimaailman tilan tällä hahomlle
+     *
      * @param w Tämän hahmon pelimaailma
      */
     public void updateWorld(World w) {
         this.world = w;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Character character = (Character) o;
+        return x == character.x && y == character.y && Objects.equals(world, character.world);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(world, x, y);
     }
 }

@@ -12,7 +12,7 @@ public class RandomNumberGenerator {
      */
     public static int getRandInt(int min, int max) {
         double fraction = 1.0 / 32768;
-        return (int) (min + (max - min + 1) *  PRNG() * fraction);
+        return (int) (min + (max - min + 1) *  prng() * fraction);
     }
 
     /**
@@ -21,7 +21,7 @@ public class RandomNumberGenerator {
      *
      * @return Luku väliltä 0 - 32768.
      */
-    private static long PRNG() {
+    private static long prng() {
         long seed =  System.nanoTime();
         seed = 8253729 * seed + 2396403;
         return Math.abs(seed % 32768);

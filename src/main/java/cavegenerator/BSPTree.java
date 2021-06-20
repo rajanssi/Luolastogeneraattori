@@ -1,23 +1,33 @@
 package cavegenerator;
 
 import game.Tile;
-import java.util.ArrayList;
+import utils.ArrayList;
 
 import static utils.RandomNumberGenerator.*;
 
 /**
- * BSP-puu tietorakenne, joka sisältää mm. algoritmin tason luomiselle
+ * BSP-puu tietorakenne, joka sisältää mm. algoritmin tason luomiselle.
  */
 public class BSPTree {
     private final int maxLeafSize;
     private final int mapWidth;
     private final int mapHeight;
     private final ArrayList<Leaf> leaves;
-    private final Tile[][] level;
     private final ArrayList<Room> rooms;
+    private final Tile[][] level;
     int roomMaxSize;
     int roomMinSize;
 
+    /**
+     * BSP puun konstruktori, joka ottaa parametreina luotavan alueen koon, puun lehtien maksimikoon ja luotavien huoneiden
+     * maksimi- ja minimikoon.
+     *
+     * @param mapWidth Luotavan alueen leveys
+     * @param mapHeight Luotavan alueen korkeus
+     * @param maxLeafSize Puun lehtisolmun maksimikoko
+     * @param roomMaxSize Luotavien huoneiden maksimikoko
+     * @param roomMinSize Luotavien huoneiden minimikoko
+     */
     public BSPTree(int mapWidth, int mapHeight, int maxLeafSize, int roomMaxSize, int roomMinSize) {
         this.maxLeafSize = maxLeafSize;
         this.roomMaxSize = roomMaxSize;
@@ -35,11 +45,13 @@ public class BSPTree {
         }
     }
 
+    /**
+     * Jakaa BSP-puun lehtisolmut kahtia, jos solmu on liian suuri (tai 20% todennäköisyydellä muissa tapauksissa).
+     */
     private void splitLeaves() {
         boolean splitSuccessfully = true;
         while (splitSuccessfully) {
             splitSuccessfully = false;
-
             int j = leaves.size();
             for (int i = 0; i < j; i++) {
                 Leaf l = leaves.get(i);
@@ -72,11 +84,18 @@ public class BSPTree {
         return getLevel();
     }
 
+    /**
+     * Palauttaa luodun tason kaksiulotteisena taulukkona.
+     * @return Luotu taso kaksiulotteisena ruudukkona.
+     */
     public Tile[][] getLevel() {
         return level;
     }
 
-    // TODO: Oma ArrayList toteutus tähän - muokkaa World luokan for-silmukoita
+    /**
+     * Palauttaa algoritmin luomat huoneet.
+     * @return Algoritmin luomat huoneet.
+     */
     public ArrayList<Room> getRooms() {
         return rooms;
     }

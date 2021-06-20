@@ -3,9 +3,8 @@ package cavegenerator;
 import static utils.RandomNumberGenerator.*;
 
 /**
- * BSP-puussa käytettävät lehdet toteutettu tämän luokan avulla. Jokaisella lehdellä on potentiaalisesti kaksi lasta
+ * BSP-puussa käytettävät lehtisolmut toteutettu tämän luokan avulla. Jokaisella lehdellä on potentiaalisesti kaksi lasta
  * (perustuen binäärihakupuun malliin).
- *
  */
 class Leaf {
     private final int x, y;
@@ -13,6 +12,13 @@ class Leaf {
     Leaf child1, child2;
     Room room, room1, room2;
 
+    /**
+     * Konstruktori lehtisolmulle, joka ottaa solmun sijainnin xy-akselilla ja sen leveyden ja korkeuden.
+     * @param x Lehden sijainti x-akselilla.
+     * @param y Lehden sijainti y-akselilla
+     * @param width Lehden leveys.
+     * @param height Lehden korkeus.
+     */
     public Leaf(int x, int y, int width, int height) {
         this.x = x;
         this.y = y;
@@ -24,6 +30,10 @@ class Leaf {
         room2 = null;
     }
 
+    /**
+     * Jakaa tämän lehden kahteen uuteen lehteen.
+     * @return Palauttaa true jos jakaminen onnistui, muuten false.
+     */
     public boolean splitLeaf() {
         if (child1 != null || child2 != null) {
             return false;
@@ -61,6 +71,10 @@ class Leaf {
         return true;
     }
 
+    /**
+     * Luo huoneita tämän lehden sisälle.
+     * @param bsp Lehden BSP-puu, joka sisältää mm. kentät huoneiden maksimi- ja minimikoolle.
+     */
     public void createRooms(BSPTree bsp) {
         if (child1 != null || child2 != null) {
             if (child1 != null) {
@@ -85,6 +99,10 @@ class Leaf {
         }
     }
 
+    /**
+     * Palauttaa lehden jonkin huoneen.
+     * @return Palauttaa huoneen 1, 2, tai null jos huoneita ei ole.
+     */
     public Room getRoom() {
         if (room != null) {
             return room;

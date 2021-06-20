@@ -29,7 +29,7 @@ public class CharacterAi {
      * Etsii reitin toisen pelihahmon luokse.
      *
      * @param other Toinen pelihahmo (tässä toteutuksessa aina pelaaja)
-     * @param w Tämän hahmon pelimaailma
+     * @param w     Tämän hahmon pelimaailma
      */
     public void seek(Character other, World w) {
         character.setColor(Color.GREEN);
@@ -37,16 +37,16 @@ public class CharacterAi {
 
         switch (direction) {
             case 0:
-                character.moveBy(0,-1);
+                character.moveBy(0, -1);
                 break;
             case 1:
-                character.moveBy(1,0);
+                character.moveBy(1, 0);
                 break;
             case 2:
-                character.moveBy(0,1);
+                character.moveBy(0, 1);
                 break;
             case 3:
-                character.moveBy(-1,0);
+                character.moveBy(-1, 0);
                 break;
             default:
                 moveAround();

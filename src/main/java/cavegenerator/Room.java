@@ -6,6 +6,13 @@ package cavegenerator;
 public class Room {
     public int  x1, y1, x2, y2;
 
+    /**
+     * Konstruktori, joka ottaa huoneen sijainnin tasossa xy-akselilla ja huoneen leveyden (w) ja korkeuden (h).
+     * @param x Huoneen sijainti x-akselilla.
+     * @param y Huoneen sijainti y-akselilla.
+     * @param w Huoneen leveys.
+     * @param h Huoneen korkeus.
+     */
     Room(int x, int y, int w, int h) {
         this.x1 = x;
         this.y1 = y;
@@ -14,16 +21,14 @@ public class Room {
     }
 
     /**
-     *
-     * @return Suorakulmion keskipiste x-akselilla
+     * @return Huoneen keskipiste x-akselilla.
      */
     int centerX() {
         return (x1 + x2) / 2;
     }
 
     /**
-     *
-     * @return Suorakulmion keskipiste y-akselilla
+     * @return Huoneen keskipiste y-akselilla.
      */
     int centerY() {
         return (y1 + y2) / 2;

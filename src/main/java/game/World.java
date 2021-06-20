@@ -3,7 +3,7 @@ package game;
 import asciiPanel.AsciiPanel;
 import cavegenerator.BSPTree;
 import cavegenerator.Room;
-import java.util.ArrayList;
+import utils.ArrayList;
 
 import static cavegenerator.FloorGenerator.connectTrees;
 import static utils.RandomNumberGenerator.getRandInt;
@@ -23,6 +23,12 @@ public class World {
     private final ArrayList<Character> characters;
     private int turn;
 
+    /**
+     * Konstruktori ottaa luotavan maailman korkeuden ja leveyden int muodossa
+     *
+     * @param width Luotavan maailman leveys
+     * @param height Luotavan maailman korkeus
+     */
     public World(int width, int height) {
         this.width = width;
         this.height = height;
@@ -54,12 +60,13 @@ public class World {
     }
 
     public Character getCharacter(int x, int y) {
-        // TODO: Tähän oma ArrayList toteutus
-        for (Character c : characters) {
+        for (int i = 0; i < characters.size(); i++) {
+            Character c = characters.get(i);
             if (c.getX() == x && c.getY() == y) {
                 return c;
             }
         }
+
         return null;
     }
 
@@ -67,6 +74,11 @@ public class World {
         return this.characters;
     }
 
+    /**
+     * Lisää pelihahmo tyhjään ruutuun jonkin huoneen sisälle.
+     * @param character Sijoitettava pelihahmo
+     * @param r Huone, jonne hahmo sijoitetaan
+     */
     public void addAtEmptyLocation(Character character, Room r) {
         int x;
         int y;
@@ -82,6 +94,10 @@ public class World {
         characters.add(character);
     }
 
+    /**
+     * Lisää pelaajan maailmaan ja antaa sen takaisin paluuarvona.
+     * @return Pelaajan pelihahmo.
+     */
     public Character addPlayer() {
         Room r = rooms.get(0);
         this.player = new Character(this, '@', AsciiPanel.brightWhite);
@@ -89,10 +105,13 @@ public class World {
         return player;
     }
 
+    /**
+     * Lisää 25% todennäköisyydellä pelihahmon pelimaailman huoneisiin.
+     */
     public void addEnemies() {
-        // TODO: Tähän oma ArrayList toteutus
-        for (Room r : bsp.getRooms()) {
-            if (getRandInt(0, 2) == 1) {
+        for (int i = 0; i < bsp.getRooms().size(); i++) {
+            Room r = bsp.getRooms().get(i);
+            if (getRandInt(0, 4) == 1) {
                 Character c = new Character(this, 'X', AsciiPanel.brightWhite);
                 new CharacterAi(c);
                 addAtEmptyLocation(c, r);
@@ -100,9 +119,12 @@ public class World {
         }
     }
 
+    /**
+     * Päivittää pelimaailman tilan.
+     */
     public void updateWorld() {
-        // TODO: Tähän oma ArrayList toteutus (removen kera)
-        for (Character c : characters) {
+        for (int i = 0; i < characters.size(); i++) {
+            Character c = characters.get(i);
             if (c.getSymbol() != '@') {
                 if (c.getHp() < 1) {
                     characters.remove(c);
@@ -115,9 +137,14 @@ public class World {
                 }
             }
         }
+
         turn++;
     }
 
+    /**
+     * Kasvattaa pelimaailmaa horisontaalisesti oikeaan suuntaan.
+     * @param horizontalGrowth Määrittää pelimaailman kasvun leveyssuunnassa.
+     */
     public void growWorld(int horizontalGrowth) {
         Room r1 = bsp.getRooms().get(bsp.getRooms().size() - 1);
         this.bsp = new BSPTree(horizontalGrowth, height, 24, 12, 8);
@@ -133,8 +160,9 @@ public class World {
             }
         }
         tiles = temp;
-        // TODO: Tähän oma ArrayList toteutus
-        for (Room r : bsp.getRooms()) {
+
+        for (int i = 0; i < bsp.getRooms().size(); i++) {
+            Room r = bsp.getRooms().get(i);
             r.x1 += width;
             r.x2 += width;
         }
@@ -145,12 +173,17 @@ public class World {
         addEnemies();
     }
 
+    /**
+     * Rakentaa pelimaailman BSP algoritmilla ja antaa sen takaisin paluuarvona.
+     * @return Tämä pelimaailma.
+     */
     public World build() {
         this.tiles = bsp.generateLevel();
-        // TODO: Tähän oma ArrayList toteutus
-        for (Room r : bsp.getRooms()) {
-            rooms.add(r);
+
+        for (int i = 0; i < bsp.getRooms().size(); i++) {
+            rooms.add(bsp.getRooms().get(i));
         }
+
         addEnemies();
         return this;
     }

@@ -1,6 +1,7 @@
 package game;
 
 import java.awt.Color;
+
 import asciiPanel.AsciiPanel;
 
 /**
@@ -14,13 +15,11 @@ public enum Tile {
     DOOR('D', AsciiPanel.white);
 
     private final char symbol;
-    private Color color;
-    private boolean visible;
+    private final Color color;
 
     Tile(char symbol, Color color) {
         this.symbol = symbol;
         this.color = color;
-        this.visible = false;
     }
 
     public char getSymbol() {
@@ -28,20 +27,8 @@ public enum Tile {
     }
 
     public Color getColor() {
-        if (visible && symbol != 'x') {
-            return color;
-        }
-        return Color.DARK_GRAY;
+        return color;
     }
-
-    public void setVisible(boolean b) {
-        this.visible = b;
-    }
-
-    public boolean isVisible() {
-        return this.visible;
-    }
-
 
     public boolean isWalkable() {
         return this != WALL && this != ROOMWALL && this != BOUNDS;

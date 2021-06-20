@@ -27,12 +27,13 @@ public class Pathfinder {
     }
 
     void addEdge(int a, int b, int c) {
-        if (c == '#' || c == '*') return;
+        if (c == '#' || c == '*') {
+            return;
+        }
         edges.add(new Edge(a, b));
     }
 
     /**
-     *
      * Konstruktori ottaa pelimaailman, hakevan hahmon ja kohdehahmon parametreiksi
      *
      * @param w Nykyinen pelimaailma
@@ -82,6 +83,7 @@ public class Pathfinder {
 
     /**
      * Luo kaaret leveyshaussa käytettävää kaarilistaa varten ja palauttaa alku- ja lähtöruudut.
+     *
      * @param r String-taulukko, joka kuvaa hahmon ympäriltä haettavia ruutuja.
      * @return Palauttaa kaksi indeksiä sisältävän int-taulukon, joista ensimmäisessä indeksissä on hakevan hahmon sijainti
      * ja toisessa indeksissä on haettavan hahmon sijainti.
@@ -111,6 +113,7 @@ public class Pathfinder {
 
     /**
      * Rakentaa pelihahmon ympäriltä haettavan alueen
+     *
      * @return Palauttaa String-taulukon, joka vastaa 2-ulotteista kuvausta hahmon ympäriltä haettavista ruuduista
      */
     private String[] createArea() {
@@ -143,26 +146,33 @@ public class Pathfinder {
     }
 
     /**
-     * Etsii lyhimmät polut lähtöruudusta kaikkiin ruutuihin leveyshaun avulla
+     * Etsii lyhimmät polut lähtöruudusta kaikkiin ruutuihin Bellmanin ja Fordin algoritmin avulla
+     *
      * @param a Lähtöruudun indeksi yksiulotteisessa muodossa
      * @return Palauttaa kaikki etäisyydet lähtöruudusta taulukkona
      */
     private int[] findRoutes(int a) {
         int[] dist = new int[n];
-        for (int i = 0; i < n; i++) dist[i] = -1;
+        for (int i = 0; i < n; i++) {
+            dist[i] = -1;
+        }
         dist[a] = 0;
         while (true) {
             boolean change = false;
             for (int i = 0; i < edges.size(); i++) {
                 Edge e = edges.get(i);
-                if (dist[e.a] == -1) continue;
+                if (dist[e.a] == -1) {
+                    continue;
+                }
                 int newDist = dist[e.a] + 1;
                 if (newDist < dist[e.b] || dist[e.b] == -1) {
                     dist[e.b] = newDist;
                     change = true;
                 }
             }
-            if (!change) break;
+            if (!change) {
+                break;
+            }
         }
         return dist;
     }

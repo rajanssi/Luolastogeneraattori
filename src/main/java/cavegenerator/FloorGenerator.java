@@ -9,10 +9,21 @@ import static utils.RandomNumberGenerator.getRandInt;
  */
 public class FloorGenerator {
 
+    /**
+     * Yhdistää kaksi BSP-puun luomaa huonetta toisiinsa käytävällä.
+     * @param room1 Lähtöhuone, josta käytävä alkaa.
+     * @param room2 Maalihuone, jonne käytävä päättyy.
+     * @param level Taso, jossa yhdistäminen tehdään.
+     */
     public static void connectTrees(Room room1, Room room2, Tile[][] level) {
         createHall(room1, room2, level);
     }
 
+    /**
+     * Rakentaa huoneen seinät ja lattiat annettuun tasoon BSP algoritmin luoman huoneen spesifikaatioiden mukaisesti.
+     * @param room Huone, jonka pohjalta tasoon luodaan seinät ja lattiat.
+     * @param level Taso, jonne seinät ja lattiat luodaan.
+     */
     static void createRoom(Room room, Tile[][] level) {
         for (int x = room.x1 + 1; x < room.x2; x++) {
             for (int y = room.y1 + 1; y < room.y2; y++) {
@@ -27,6 +38,12 @@ public class FloorGenerator {
         }
     }
 
+    /**
+     * Rakentaa käytävän kahden huoneen välille.
+     * @param room1 Lähtöhuone, josta käytävä alkaa.
+     * @param room2 Maalihuone, jonne käytävä päättyy.
+     * @param level Taso, jossa käytävä luodaan.
+     */
     static void createHall(Room room1, Room room2, Tile[][] level) {
         int x1 = room1.centerX();
         int y1 = room1.centerY();
@@ -42,6 +59,13 @@ public class FloorGenerator {
         }
     }
 
+    /**
+     * Rakentaa käytävää horisontaalisesti.
+     * @param x1 Käytävän pää x-akselilla.
+     * @param x2 Käytävän häntä x-akselilla.
+     * @param y Käyätävän sijainti y-akselilla
+     * @param level Taso, jossa käytävä tehdään.
+     */
     static void createHorTunnel(int x1, int x2, int y, Tile[][] level) {
         for (int x = Math.min(x1, x2); x <= Math.max(x1, x2); x++) {
             if (level[x][y - 1] != Tile.FLOOR && level[x][y - 1] != Tile.DOOR) {
@@ -59,6 +83,13 @@ public class FloorGenerator {
 
     }
 
+    /**
+     * Rakentaa käytävää vertikaalisesti.
+     * @param y1 Käytävän pää y-akselilla.
+     * @param y2 Käytävän häntä y-akselilla.
+     * @param x Käyätävän sijainti x-akselilla
+     * @param level Taso, jossa käytävä tehdään.
+     */
     static void createVerTunnel(int y1, int y2, int x, Tile[][] level) {
         for (int y = Math.min(y1, y2); y <= Math.max(y1, y2); y++) {
             if (level[x - 1][y] != Tile.FLOOR && level[x - 1][y] != Tile.DOOR) {
