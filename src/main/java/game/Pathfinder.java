@@ -93,7 +93,6 @@ public class Pathfinder {
         int m = r[0].length();
         this.n = n * m;
         int[] ab = new int[2];
-
         for (int i = 1; i < n - 1; i++) {
             for (int j = 1; j < m - 1; j++) {
                 int a = i * m + j;

@@ -14,9 +14,10 @@ class Leaf {
 
     /**
      * Konstruktori lehtisolmulle, joka ottaa solmun sijainnin xy-akselilla ja sen leveyden ja korkeuden.
-     * @param x Lehden sijainti x-akselilla.
-     * @param y Lehden sijainti y-akselilla
-     * @param width Lehden leveys.
+     *
+     * @param x      Lehden sijainti x-akselilla.
+     * @param y      Lehden sijainti y-akselilla
+     * @param width  Lehden leveys.
      * @param height Lehden korkeus.
      */
     public Leaf(int x, int y, int width, int height) {
@@ -32,6 +33,7 @@ class Leaf {
 
     /**
      * Jakaa tämän lehden kahteen uuteen lehteen.
+     *
      * @return Palauttaa true jos jakaminen onnistui, muuten false.
      */
     public boolean splitLeaf() {
@@ -73,6 +75,7 @@ class Leaf {
 
     /**
      * Luo huoneita tämän lehden sisälle.
+     *
      * @param bsp Lehden BSP-puu, joka sisältää mm. kentät huoneiden maksimi- ja minimikoolle.
      */
     public void createRooms(BSPTree bsp) {
@@ -80,11 +83,9 @@ class Leaf {
             if (child1 != null) {
                 child1.createRooms(bsp);
             }
-
             if (child2 != null) {
                 child2.createRooms(bsp);
             }
-
             if (child1 != null && child2 != null) {
                 FloorGenerator.createHall(child1.getRoom(), child2.getRoom(), bsp.getLevel());
             }
@@ -101,6 +102,7 @@ class Leaf {
 
     /**
      * Palauttaa lehden jonkin huoneen.
+     *
      * @return Palauttaa huoneen 1, 2, tai null jos huoneita ei ole.
      */
     public Room getRoom() {

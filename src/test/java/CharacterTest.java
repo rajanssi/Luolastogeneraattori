@@ -21,13 +21,34 @@ public class CharacterTest {
 
     @Test
     public void nonPlayerCharacterHasAi() {
-        w.addEnemies();
-        Character c = null;
-        do {
-            c = w.getCharacters().get(1);
-        }
-        while (c == null);
-        assertNotNull(c.getAi());
+
     }
 
+    @Test
+    public void canMoveCharacter() {
+        Character player = w.addPlayer();
+
+        int x, y;
+        x = player.getX();
+        y = player.getY();
+
+        if (w.getTile(x + 1, y).isWalkable()) {
+            player.moveBy(1, 0);
+            assertEquals(x + 1, player.getX());
+            player.moveBy(-1, 0);
+        }
+        if (w.getTile(x, y + 1).isWalkable()) {
+            player.moveBy(0, 1);
+            assertEquals(y + 1, player.getY());
+            player.moveBy(0, -1);
+        }
+        if (w.getTile(x + 1, y + 1).isWalkable()) {
+            player.moveBy(1, 1);
+            assertEquals(x + 1, player.getX());
+            assertEquals(y + 1, player.getY());
+            player.moveBy(-1, -1);
+        }
+        assertEquals(x, player.getX());
+        assertEquals(y, player.getY());
+    }
 }

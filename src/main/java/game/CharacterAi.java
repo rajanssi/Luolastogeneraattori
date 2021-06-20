@@ -34,7 +34,6 @@ public class CharacterAi {
     public void seek(Character other, World w) {
         character.setColor(Color.GREEN);
         int direction = new Pathfinder(w, character, other).getDirection();
-
         switch (direction) {
             case 0:
                 character.moveBy(0, -1);

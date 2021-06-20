@@ -19,9 +19,9 @@ public class Character {
     /**
      * Konstruktori ottaa maailman, johon hahmo luodaan, hahmon ASCII symbolin ja värin
      *
-     * @param world Maailma, johon hahmo luodaan
+     * @param world  Maailma, johon hahmo luodaan
      * @param symbol Hahmon käyttöliittymässä näytettävä ASCII symboli
-     * @param color Hahmon väri käyttöliittymässä
+     * @param color  Hahmon väri käyttöliittymässä
      */
     public Character(World world, char symbol, Color color) {
         this.world = world;
@@ -64,6 +64,10 @@ public class Character {
         return ai;
     }
 
+    public void setAi() {
+        this.ai = new CharacterAi(this);
+    }
+
     public Color getColor() {
         return color;
     }
@@ -100,8 +104,8 @@ public class Character {
     /**
      * Tarkistaa, voiko ruutuun siirtyä.
      *
-     * @param x Ruutu johon siirrytään x-akselilla
-     * @param y Ruutu johon siirrytään y-akselilla
+     * @param x    Ruutu johon siirrytään x-akselilla
+     * @param y    Ruutu johon siirrytään y-akselilla
      * @param tile Siirryttävä ruutu
      */
     public void onEnter(int x, int y, Tile tile) {
@@ -135,8 +139,12 @@ public class Character {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Character character = (Character) o;
         return x == character.x && y == character.y && Objects.equals(world, character.world);
     }

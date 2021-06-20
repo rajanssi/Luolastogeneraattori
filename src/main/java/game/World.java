@@ -19,7 +19,7 @@ public class World {
     private Tile[][] tiles;
     private BSPTree bsp;
     private Character player;
-    private final ArrayList<Room> rooms;
+    public ArrayList<Room> rooms;
     private final ArrayList<Character> characters;
     private int turn;
 
