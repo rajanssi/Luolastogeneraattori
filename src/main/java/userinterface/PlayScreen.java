@@ -16,8 +16,9 @@ public class PlayScreen implements Screen {
     public PlayScreen() {
         screenWidth = 150;
         screenHeight = 50;
-        world = new World(50, 50).build();
+        world = new World(50, 50, 5).build();
         player = world.addPlayer();
+        world.addEnemies();
     }
 
     private void growWorld() {
@@ -78,6 +79,12 @@ public class PlayScreen implements Screen {
                 break;
             case KeyEvent.VK_SPACE:
                 player.moveBy(0, 0);
+                break;
+            case KeyEvent.VK_X:
+                System.out.println(world.rooms.size());
+                break;
+            case KeyEvent.VK_C:
+                System.out.println(world.getCharacters().size());
                 break;
         }
 

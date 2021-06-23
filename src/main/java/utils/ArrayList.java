@@ -37,6 +37,18 @@ public class ArrayList<T> {
     }
 
     /**
+     * Asettaa annettuun indeksiin parametrina annetun alkion.
+     * @param index Indeksi, jonka sisältöä muokataan.
+     * @param item Alkio, joka sijoitetaan annettuun indeksiin.
+     */
+    public void set(int index, T item) {
+        if (index >= size) {
+            return;
+        }
+        data[index] = item;
+    }
+
+    /**
      * Lisää alkion taulukkolistaan.
      * @param item Lisättävä alkio.
      */

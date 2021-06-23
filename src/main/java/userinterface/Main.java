@@ -1,9 +1,9 @@
+package userinterface;
+
 import javax.swing.JFrame;
 
 import asciiPanel.AsciiFont;
 import asciiPanel.AsciiPanel;
-import userinterface.Screen;
-import userinterface.StartScreen;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

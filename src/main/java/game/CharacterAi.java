@@ -32,7 +32,7 @@ public class CharacterAi {
      * @param w     Tämän hahmon pelimaailma
      */
     public void seek(Character other, World w) {
-        character.setColor(Color.GREEN);
+        character.setColor(Color.RED);
         int direction = new Pathfinder(w, character, other).getDirection();
         switch (direction) {
             case 0:

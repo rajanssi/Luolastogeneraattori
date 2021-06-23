@@ -1,5 +1,7 @@
 package cavegenerator;
 
+import java.util.Objects;
+
 /**
  * Suorakulmio, joka luodaan pisteiden (x1, y1) ja (x2, y2) perusteella
  */
@@ -23,14 +25,14 @@ public class Room {
     /**
      * @return Huoneen keskipiste x-akselilla.
      */
-    int centerX() {
+    public int centerX() {
         return (x1 + x2) / 2;
     }
 
     /**
      * @return Huoneen keskipiste y-akselilla.
      */
-    int centerY() {
+    public int centerY() {
         return (y1 + y2) / 2;
     }
 }

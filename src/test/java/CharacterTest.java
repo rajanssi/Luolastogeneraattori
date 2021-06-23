@@ -10,7 +10,7 @@ public class CharacterTest {
 
     @BeforeClass
     public static void setUpClass() {
-        w = new World(40, 40).build();
+        w = new World(40, 40, 20).build();
     }
 
     @Test
@@ -19,10 +19,6 @@ public class CharacterTest {
         assertNotNull(player);
     }
 
-    @Test
-    public void nonPlayerCharacterHasAi() {
-
-    }
 
     @Test
     public void canMoveCharacter() {

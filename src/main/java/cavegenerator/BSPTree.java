@@ -9,10 +9,10 @@ import static utils.RandomNumberGenerator.*;
  * BSP-puu tietorakenne, joka sisältää mm. algoritmin tason luomiselle.
  */
 public class BSPTree {
+    private final ArrayList<Leaf> leaves;
     private final int maxLeafSize;
     private final int mapWidth;
     private final int mapHeight;
-    private final ArrayList<Leaf> leaves;
     private final ArrayList<Room> rooms;
     private final Tile[][] level;
     int roomMaxSize;
@@ -99,6 +99,5 @@ public class BSPTree {
     public ArrayList<Room> getRooms() {
         return rooms;
     }
-
 }
 

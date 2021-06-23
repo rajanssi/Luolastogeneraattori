@@ -15,7 +15,7 @@ import static utils.RandomNumberGenerator.getRandInt;
  */
 public class World {
     private int width;
-    private int height;
+    private final int height;
     private Tile[][] tiles;
     private BSPTree bsp;
     private Character player;
@@ -26,15 +26,15 @@ public class World {
     /**
      * Konstruktori ottaa luotavan maailman korkeuden ja leveyden int muodossa
      *
-     * @param width Luotavan maailman leveys
+     * @param width  Luotavan maailman leveys
      * @param height Luotavan maailman korkeus
      */
-    public World(int width, int height) {
+    public World(int width, int height, int maxRoomSize) {
         this.width = width;
         this.height = height;
         this.rooms = new ArrayList<>();
         this.characters = new ArrayList<>();
-        this.bsp = new BSPTree(width, height, 24, 12, 8);
+        this.bsp = new BSPTree(width, height, 24, maxRoomSize, 8);
         this.turn = 1;
         this.player = null;
     }
@@ -76,8 +76,9 @@ public class World {
 
     /**
      * Lisää pelihahmo tyhjään ruutuun jonkin huoneen sisälle.
+     *
      * @param character Sijoitettava pelihahmo
-     * @param r Huone, jonne hahmo sijoitetaan
+     * @param r         Huone, jonne hahmo sijoitetaan
      */
     public void addAtEmptyLocation(Character character, Room r) {
         int x;
@@ -96,6 +97,7 @@ public class World {
 
     /**
      * Lisää pelaajan maailmaan ja antaa sen takaisin paluuarvona.
+     *
      * @return Pelaajan pelihahmo.
      */
     public Character addPlayer() {
@@ -143,6 +145,7 @@ public class World {
 
     /**
      * Kasvattaa pelimaailmaa horisontaalisesti oikeaan suuntaan.
+     *
      * @param horizontalGrowth Määrittää pelimaailman kasvun leveyssuunnassa.
      */
     public void growWorld(int horizontalGrowth) {
@@ -165,6 +168,7 @@ public class World {
             Room r = bsp.getRooms().get(i);
             r.x1 += width;
             r.x2 += width;
+            rooms.add(r);
         }
 
         Room r2 = bsp.getRooms().get(0);
@@ -175,6 +179,7 @@ public class World {
 
     /**
      * Rakentaa pelimaailman BSP algoritmilla ja antaa sen takaisin paluuarvona.
+     *
      * @return Tämä pelimaailma.
      */
     public World build() {
@@ -184,7 +189,6 @@ public class World {
             rooms.add(bsp.getRooms().get(i));
         }
 
-        addEnemies();
         return this;
     }
 }

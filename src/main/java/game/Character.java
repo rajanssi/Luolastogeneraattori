@@ -136,21 +136,4 @@ public class Character {
     public void updateWorld(World w) {
         this.world = w;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Character character = (Character) o;
-        return x == character.x && y == character.y && Objects.equals(world, character.world);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(world, x, y);
-    }
 }

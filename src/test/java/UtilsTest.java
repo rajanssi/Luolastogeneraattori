@@ -43,4 +43,12 @@ public class UtilsTest {
         a.remove(o);
         assertEquals(0, a.size());
     }
+
+    @Test
+    public void canModifyExistingItem() {
+        a.add(3);
+        a.set(0, 9);
+        assertEquals(9, a.get(0));
+
+    }
 }
