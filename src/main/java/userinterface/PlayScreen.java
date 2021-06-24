@@ -13,16 +13,16 @@ public class PlayScreen implements Screen {
     private final World world;
     private final Character player;
 
-    public PlayScreen() {
-        screenWidth = 150;
-        screenHeight = 50;
-        world = new World(50, 50, 5).build();
+    public PlayScreen(int w, int h) {
+        screenWidth = w;
+        screenHeight = h;
+        world = new World(screenWidth, screenHeight, 5).build();
         player = world.addPlayer();
         world.addEnemies();
     }
 
     private void growWorld() {
-        world.growWorld(40);
+        world.growWorld(screenWidth);
         for (int i = 0; i < world.getCharacters().size(); i++) {
             Character c = world.getCharacters().get(i);
             c.updateWorld(world);
@@ -30,10 +30,10 @@ public class PlayScreen implements Screen {
 
     }
 
+    @Override
     public void displayOutput(AsciiPanel terminal) {
         int left = getScrollX();
         int top = getScrollY();
-
         displayTiles(terminal, left, top);
         String stats = String.format(" %3d/%3d hp", player.getHp(), 5);
         String location = String.format(" %3d x %3d y", player.getX(), player.getY());
@@ -43,12 +43,13 @@ public class PlayScreen implements Screen {
         terminal.write(location, 1, screenHeight - 4);
     }
 
+    @Override
     public Screen respondToUserInput(KeyEvent key) {
         switch (key.getKeyCode()) {
             case KeyEvent.VK_ESCAPE:
-                return new StartScreen();
+                return new StartScreen(screenWidth, screenHeight);
             case KeyEvent.VK_ENTER:
-                return new PlayScreen();
+                return new PlayScreen(screenWidth, screenHeight);
             case KeyEvent.VK_LEFT:
             case KeyEvent.VK_H:
                 player.moveBy(-1, 0);

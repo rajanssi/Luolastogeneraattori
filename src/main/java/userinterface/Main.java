@@ -10,6 +10,8 @@ import java.awt.event.KeyListener;
 
 public class Main extends JFrame implements KeyListener {
     private final AsciiPanel terminal;
+    private final int screenWidth = 100;
+    private final int screenHeight = 50;
     private Screen screen;
 
     /**
@@ -17,10 +19,10 @@ public class Main extends JFrame implements KeyListener {
      */
     public Main() {
         super();
-        terminal = new AsciiPanel(150, 50, AsciiFont.CP437_12x12);
+        terminal = new AsciiPanel(screenWidth, screenHeight, AsciiFont.CP437_12x12);
         add(terminal);
         pack();
-        screen = new StartScreen();
+        screen = new StartScreen(screenWidth, screenHeight);
         addKeyListener(this);
         repaint();
     }
