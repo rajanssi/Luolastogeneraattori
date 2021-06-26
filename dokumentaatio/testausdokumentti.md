@@ -6,17 +6,15 @@ Ohjelmaa on yksikkötestattu JUnitilla sekä manuaalisesti tapahtunein järjeste
 
 ### Sovelluslogiikka
 
-JUnit testien päähuomiona on sudoku.domain pakkauksen SudokuService luokka. Sen kautta pääsee käsiksi lähes kaikkiin sovelluslogiikan muihin luokkiin, joten sitä testaamalla kaikkien muiden luokkien toiminnallisuus testautuu samalla. Lisäksi käyttöliittymä ja sovelluslogiikka kommunikoivat pääasiassa SudokuService luokan kautta, joten on mielekästä testata suurin osa sovelluslogiikan toiminnallisuuksista sen kautta. GameServiceTest on siis pääasiassa integraatiotestausta. Esim. SettingsTest on kuitenkin puhtaasti yksikkötestausta.
-
-Yksikkötesteillä testataan kokonaisvaltaisesti sekä pelilogiikkaa, että pelimaailmaa pelimaailman rakentaamiseen käytett
-
+Yksikkötesteillä testataan kokonaisvaltaisesti sekä pelilogiikkaa, että pelimaailmaa pelimaailman rakentaamiseen käytettävää BSP algoritmia ja BSP-puu tietorakennetta. Lisäksi testataan mm. itse tehtyä satunnaislukugeneraattoria ja omaa taulukkolistatoteutusta. 
 
 ### Testauskattavuus
 
-JUnitilla suoritetetun yksikkötestauksen rivikattavuus on *91%* ja haarautumiskattavuus *87%*.
+JUnitilla suoritetetun yksikkötestauksen rivikattavuus on *96%* ja haarautumiskattavuus *87%*.
 
-<img src="#" width="800">
+<img src="https://user-images.githubusercontent.com/70325495/123524157-1d1ed180-d6d1-11eb-8e69-61f98bf8fbd5.png" width="900">
 
+Yksikkötestauksesta on jätetty pois käyttöliittymätoiminnallisuuden ja suorituskykytestien yksikkötestaukset.
 
 ### Toiminnallisuudet
 
@@ -24,6 +22,6 @@ Kaikki [määrittelydokumentin](https://github.com/rajanssi/luolastogeneraattori
 
 ## Suorituskyky- ja oikeellisuustestit
 
-
 ### Oikeellisuus
+
 
