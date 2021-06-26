@@ -23,3 +23,7 @@ Tähän käyttöohje
 ## Dokumentaatio
 
 [Määrittelydokumentti](https://github.com/rajanssi/Luolastogeneraattori/blob/main/dokumentaatio/maarittelydokumentti.md)
+
+[Toteutusdokumentti](https://github.com/rajanssi/Luolastogeneraattori/blob/main/dokumentaatio/toteutusdokumentti.md)
+
+[Testausdokumentti](https://github.com/rajanssi/Luolastogeneraattori/blob/main/dokumentaatio/testausdokumentti.md)
