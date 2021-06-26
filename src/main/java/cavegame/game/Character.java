@@ -1,7 +1,6 @@
-package game;
+package cavegame.game;
 
 import java.awt.*;
-import java.util.Objects;
 
 /**
  * Määrittelee pelihahmo-olion ja mm. sen sijainnin pelimaailmassa, tekoälyn ja ulkonäön

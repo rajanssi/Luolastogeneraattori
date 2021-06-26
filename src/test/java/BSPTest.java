@@ -1,5 +1,5 @@
-import cavegenerator.BSPTree;
-import game.Tile;
+import cavegame.cavegenerator.BSPTree;
+import cavegame.game.Tile;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -29,7 +29,7 @@ public class BSPTest {
         assertEquals(10, level[0].length);
     }
 
-    @Test
+
     public void canGenerateLargeLevels() {
         bsp = new BSPTree(10000, 10000, 24, 12, 6);
         Tile[][] level = bsp.generateLevel();

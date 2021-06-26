@@ -1,8 +1,8 @@
-package cavegenerator;
+package cavegame.cavegenerator;
 
-import game.Tile;
+import cavegame.game.Tile;
 
-import static utils.RandomNumberGenerator.getRandInt;
+import static cavegame.utils.RandomNumberGenerator.getRandInt;
 
 /**
  * Metodeja pelitason ruutujen rakentamiselle annetun tietorakenteen perusteella.

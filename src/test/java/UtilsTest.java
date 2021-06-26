@@ -1,6 +1,6 @@
 import org.junit.Before;
 import org.junit.Test;
-import utils.ArrayList;
+import cavegame.utils.ArrayList;
 
 import static org.junit.Assert.*;
 

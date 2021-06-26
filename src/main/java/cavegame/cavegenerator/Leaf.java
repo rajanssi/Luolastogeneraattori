@@ -1,6 +1,6 @@
-package cavegenerator;
+package cavegame.cavegenerator;
 
-import static utils.RandomNumberGenerator.*;
+import static cavegame.utils.RandomNumberGenerator.*;
 
 /**
  * BSP-puussa käytettävät lehtisolmut toteutettu tämän luokan avulla. Jokaisella lehdellä on potentiaalisesti kaksi lasta

@@ -1,6 +1,6 @@
-package game;
+package cavegame.game;
 
-import utils.ArrayList;
+import cavegame.utils.ArrayList;
 
 /**
  * Etsii reitin lähtöruudusta lähimpää vihollista kohden

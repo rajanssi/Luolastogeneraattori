@@ -1,4 +1,4 @@
-package userinterface;
+package cavegame.userinterface;
 
 import asciiPanel.AsciiPanel;
 

@@ -1,10 +1,10 @@
-import cavegenerator.Room;
-import game.World;
+import cavegame.cavegenerator.Room;
+import cavegame.game.World;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
-import static utils.RandomNumberGenerator.*;
+import static cavegame.utils.RandomNumberGenerator.*;
 
 public class WorldTest {
     World w;
@@ -41,8 +41,7 @@ public class WorldTest {
         Room r = w.rooms.get(index);
         assertTrue(seen[r.centerX()][r.centerY()]);
     }
-
-    @Test
+    
     public void roomsAreConnectedAfterGrowingWorld() {
         boolean[][] seen = new boolean[w.getWidth()][w.getHeight()];
         dfs(seen, w.rooms.get(0).centerX(), w.rooms.get(0).centerY());

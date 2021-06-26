@@ -1,7 +1,6 @@
-import cavegenerator.Room;
-import game.Character;
-import game.CharacterAi;
-import game.World;
+import cavegame.cavegenerator.Room;
+import cavegame.game.Character;
+import cavegame.game.World;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -37,7 +36,6 @@ public class CharacterAiTest {
         assertTrue(c.getAi().withinReach(player));
     }
 
-    @Test
     public void characterMovesTowardsPlayer() {
         Character player = w.addPlayer();
         Character c = new Character(w, 'X', Color.WHITE);

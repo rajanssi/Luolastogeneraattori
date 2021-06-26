@@ -1,4 +1,4 @@
-package cavegenerator;
+package cavegame.cavegenerator;
 
 import java.util.Objects;
 

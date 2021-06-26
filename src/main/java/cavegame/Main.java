@@ -1,9 +1,12 @@
-package userinterface;
+package cavegame;
 
 import javax.swing.JFrame;
 
 import asciiPanel.AsciiFont;
 import asciiPanel.AsciiPanel;
+import cavegame.userinterface.Screen;
+import cavegame.userinterface.StartScreen;
+import performancetests.PerformanceTester;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -53,8 +56,13 @@ public class Main extends JFrame implements KeyListener {
     }
 
     public static void main(String[] args) {
-        Main app = new Main();
-        app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        app.setVisible(true);
+        if (args.length == 0) {
+            Main app = new Main();
+            app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            app.setVisible(true);
+        } else {
+            PerformanceTester p = new PerformanceTester();
+            p.launch();
+        }
     }
 }

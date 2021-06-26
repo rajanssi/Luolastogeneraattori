@@ -1,8 +1,8 @@
-package game;
+package cavegame.game;
 
 import java.awt.*;
 
-import static utils.RandomNumberGenerator.getRandInt;
+import static cavegame.utils.RandomNumberGenerator.getRandInt;
 
 /**
  * Luokka pelin hahmojen liikkumiselle

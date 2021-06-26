@@ -1,11 +1,11 @@
-package userinterface;
+package cavegame.userinterface;
 
 import java.awt.event.KeyEvent;
 
 import asciiPanel.AsciiPanel;
-import game.Character;
-import game.Tile;
-import game.World;
+import cavegame.game.Character;
+import cavegame.game.Tile;
+import cavegame.game.World;
 
 public class PlayScreen implements Screen {
     private final int screenWidth;

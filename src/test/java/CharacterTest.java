@@ -1,5 +1,5 @@
-import game.Character;
-import game.World;
+import cavegame.game.Character;
+import cavegame.game.World;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -44,7 +44,5 @@ public class CharacterTest {
             assertEquals(y + 1, player.getY());
             player.moveBy(-1, -1);
         }
-        assertEquals(x, player.getX());
-        assertEquals(y, player.getY());
     }
 }

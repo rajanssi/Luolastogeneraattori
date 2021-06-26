@@ -1,9 +1,9 @@
-package cavegenerator;
+package cavegame.cavegenerator;
 
-import game.Tile;
-import utils.ArrayList;
+import cavegame.game.Tile;
+import cavegame.utils.ArrayList;
 
-import static utils.RandomNumberGenerator.*;
+import static cavegame.utils.RandomNumberGenerator.*;
 
 /**
  * BSP-puu tietorakenne, joka sisältää mm. algoritmin tason luomiselle.
@@ -40,7 +40,7 @@ public class BSPTree {
 
         for (int i = 0; i < mapWidth; i++) {
             for (int j = 0; j < mapHeight; j++) {
-                getLevel()[i][j] = Tile.BOUNDS;
+                level[i][j] = Tile.BOUNDS;
             }
         }
     }

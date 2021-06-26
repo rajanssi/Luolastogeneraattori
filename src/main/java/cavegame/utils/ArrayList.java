@@ -1,4 +1,4 @@
-package utils;
+package cavegame.utils;
 
 /**
  * Taulukkolistatoteutus, joka kasvaa ja kutistuu dynaamisesti tarvittavan tilan perusteella. Lisäysten tasoitettu

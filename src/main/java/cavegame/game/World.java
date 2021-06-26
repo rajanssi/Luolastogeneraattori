@@ -1,12 +1,12 @@
-package game;
+package cavegame.game;
 
 import asciiPanel.AsciiPanel;
-import cavegenerator.BSPTree;
-import cavegenerator.Room;
-import utils.ArrayList;
+import cavegame.cavegenerator.BSPTree;
+import cavegame.cavegenerator.Room;
+import cavegame.utils.ArrayList;
 
-import static cavegenerator.FloorGenerator.connectTrees;
-import static utils.RandomNumberGenerator.getRandInt;
+import static cavegame.cavegenerator.FloorGenerator.connectTrees;
+import static cavegame.utils.RandomNumberGenerator.getRandInt;
 
 /**
  * Määrittelee oleelliset tiedot pelissä käytettävästä tasosta, kuten tason korkeus ja leveys ruuduissa sekä kaikki

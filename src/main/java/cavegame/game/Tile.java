@@ -1,4 +1,4 @@
-package game;
+package cavegame.game;
 
 import java.awt.Color;
 
