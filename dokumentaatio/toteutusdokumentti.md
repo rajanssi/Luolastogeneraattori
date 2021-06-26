@@ -14,7 +14,7 @@ Pakkaus *game* sisältää pelilogiikan kannalta oleelliset luokat, kuten World 
 
 Pakkaukseen *cavegenerator* on sisällytetty luolastojen luomista varten oleelliset tietorakenteet, tietotyypit ja algoritmit. Luolastot luodaan [binary space partitioning](#) algoritmilla ja jaettu tilan osiointi talletetaan BSP-puu tietorakenteeseen. Pakkauksessa on myös luokat Leaf, Room ja FloorGenerator BSP algoritmin toiminnallisuuden toteuttamiseen ja algoritmin tuottaman datan muntamiseen kaksiulotteiseksi pelimaailmatasoksi.  
 
-Pakkauksessa *utils* on itse toteutettu taulukkolistatoteutus ArrayList, joka korvaa Javan standardikirjaston toteutuksen. Pakkauksessa on myös yksinkertainen pseudosatunnaislukugeneraattori, jota käytetään eri paikoin ohjelmassa.
+Pakkauksessa *utils* on itse toteutettu taulukkolistatoteutus ArrayList, joka korvaa Javan standardikirjaston toteutuksen. Pakkauksessa on myös yksinkertainen pseudosatunnaislukugeneraattori, jota käytetään eri paikoin ohjelmassa. 
 
 ## Käyttöliittymä
 
@@ -43,4 +43,33 @@ Antamalla ohjelmalle jonkin argumentin komentoriviltä sitä käynnistettäessä
 
 ## Sovelluslogiikka
 
+Sovelluksen kommunikointi käyttöliittymän kanssa toteutetaan pakkauksen *game* World ja Character luokkien olioiden avulla. Pelinäkymään siirryttäessä luodaan instanssi World ja Character luokkien olioista kuvaamaan pelimaailmaa ja pelaajaa. World luokan kannalta oleellisia käyttöliittymälle tarjoavia toimintoja ovat mm.
+
+<img src = # width="800">
+
+* void updateWorld()
+* void growWorld(int horizontalGrowth)
+* void addEnemies(), void addPlayer()
+
+Vastaavasti Character luokan käyttöliittälle tarjoamia metodeja ovat mm.
+
+* void moveBy(int mx, int my)
+* void updateWorld(World w)
+
+World luokasta tarjotaan myös käyttöliittymälle metodia *ArrayList<Character> getCharacters()*, joka palauttaa taulukkolistan pelimaailman kaikista tekoälyhahmoista. Tämän metodin avulla voidaan piirtää kaikki hahmot käyttöliittymään.
+
+Uutta maailmaa luodessa käytetään World luokan metodia *build()*. Tämä rakentaa BSP-algoritmilla uuden BSP puun, jonka pohjalta luodaan kaksiulotteinen pelimaailma. Metodi kerää myös kaikki BSP algoritmin rakentamat huoneet omaan taulukkolistaan. Metodi *addPlayer()* lisää pelaajahahmon jonkin huoneen tyhjään kohtaan metodin *addAtEmptyLocation(Character character, Room r)* metodin avulla. Metodi *addEnemies()* puolestaan käy läpi kaikki BSP-puun luomat huoneet ja lisää niihin 20% todennäköisyydellä tekoälyhahmon. 
+
+Metodia *growWorld(int horizontalGrowth)* käytetään kasvattamaan pelimaailmaa horisontaaliseen suuntaan. Metodi luo uuden BSP-puun, luo uuden kaksiulotteisen Tile taulukon johon pelimaailman ruudut on talletettu ja kopio vanhan taulukon alkiot uuteen taulukkoon. Sitten uuden BSP-puun luomat huoneet kopioidaan taulukon loppupäähän. Samalla luodaan uusia tekoälyhahmoja uuden alueen huoneisiin edellä mainitun *addEnemies()* metodin avulla. Uusi luotu pelimaailma asetetaan sitten vanhan päälle ja kaikille maailman hahmoille päivitetään uusi pelimaailma. Metodin parametreilla voidaan hallita pelimaailman kasvunopeutta. 
+
+Character luokka sisältää metodeita mm. pelihahmon liikuttamista varten. Tekoälyhahmoja liikutetaan CharacterAi ja Pathfinder luokkien avulla Bellman-Fordin algoritmilla, mikäli pelaajan hahmo on tarpeeksi lähellä tekoälyhahmoa. Tätä tarkistetaan jokaisen vuoron yhteydessä pelimaailmaa päivitettäessä World luokan metodissa *updateWorld()*. Mikäli pelaaja on vihollishahmon viereisessä ruudussa, vihollishahmo hyökkää pelaajaa vastaan Character luokan *attack(Character o)* avulla. Pelaaja voi myös samalla metodilla hyökätä vihollishahmoa vastaan. Yleistapauksessa tekoälyhahmot kuitenkin vain liikkuvat johonkin satunnaiseen suuntaan.
+
 ## Luolastoalgoritmi
+
+Ohjelman algoritmillisesti mielenkiintoisin toiminnallisuus tapahtuu *cavegenerator* pakkauksen sisällä.
+
+<pre>
+int main() {
+  printf("ye");
+}
+</pre>

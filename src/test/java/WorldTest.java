@@ -41,7 +41,7 @@ public class WorldTest {
         Room r = w.rooms.get(index);
         assertTrue(seen[r.centerX()][r.centerY()]);
     }
-    
+
     public void roomsAreConnectedAfterGrowingWorld() {
         boolean[][] seen = new boolean[w.getWidth()][w.getHeight()];
         dfs(seen, w.rooms.get(0).centerX(), w.rooms.get(0).centerY());

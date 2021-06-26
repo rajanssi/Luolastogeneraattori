@@ -1,5 +1,11 @@
 # Luolastogeneraattori
 
+Lyhyt kuvaus projektista 
+
+## Käyttöohje
+
+Tähän käyttöohje
+
 ## Viikkoraportit
 
 [Viikko 1](https://github.com/rajanssi/Luolastogeneraattori/blob/main/dokumentaatio/viikoraportit/viikkoraportti1.md)

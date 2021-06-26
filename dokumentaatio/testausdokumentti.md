@@ -1,6 +1,6 @@
 # Testausdokumentti
 
-Ohjelmaa on yksikkötestattu JUnitilla sekä manuaalisesti tapahtunein järjestelmätason testein.
+Ohjelmaa on yksikkötestattu JUnitilla sekä manuaalisesti tapahtunein järjestelmätason testein. Suorituskykyä ja oikeellisuutta on testattu myös ohjelman laajennuksella.
 
 ## Yksikkö- ja integraatiotestaus
 
@@ -10,21 +10,20 @@ JUnit testien päähuomiona on sudoku.domain pakkauksen SudokuService luokka. Se
 
 Yksikkötesteillä testataan kokonaisvaltaisesti sekä pelilogiikkaa, että pelimaailmaa pelimaailman rakentaamiseen käytett
 
-### Oikeellisuus
-
-
 
 ### Testauskattavuus
 
 JUnitilla suoritetetun yksikkötestauksen rivikattavuus on *91%* ja haarautumiskattavuus *87%*.
 
-<img src="https://raw.githubusercontent.com/rajanssi/ot-harjoitustyo/master/dokumentaatio/kuvat/b-1.png" width="800">
+<img src="#" width="800">
 
 
 ### Toiminnallisuudet
 
-Kaikki [määrittelydokumentin](https://github.com/rajanssi/luolastogeneraattori/blob/master/dokumentaatio/maarittelydokumentti.md) ja käyttöohjeen listaamat toiminnallisuudet on käyty läpi. Kaikkien toiminnallisuuksien yhteydessä on sudokuruudut yritetty täyttää myös virheellisillä arvoilla kuten kirjaimilla.
+Kaikki [määrittelydokumentin](https://github.com/rajanssi/luolastogeneraattori/blob/master/dokumentaatio/maarittelydokumentti.md) ja käyttöohjeen listaamat toiminnallisuudet on käyty läpi. 
 
 ## Suorituskyky- ja oikeellisuustestit
 
-Suorituskykytesteistä on erillinen dokumentti [täällä](#)
+
+### Oikeellisuus
+
