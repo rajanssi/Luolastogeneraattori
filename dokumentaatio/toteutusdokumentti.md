@@ -66,10 +66,68 @@ Character luokka sisältää metodeita mm. pelihahmon liikuttamista varten. Teko
 
 ## Luolastoalgoritmi
 
-Ohjelman algoritmillisesti mielenkiintoisin toiminnallisuus tapahtuu *cavegenerator* pakkauksen sisällä.
+Ohjelman algoritmillisesti mielenkiintoisin toiminnallisuus tapahtuu *cavegenerator* pakkauksen sisällä. Luolastojen luominen perustuu [binary space partitioning](#) algoritmiin. Algoritmille annetaan parametreina haluttu maailman leveys ja korkeus, suurin sallittu lehden koko, ja huoneiden maksimi- ja minimikoot. 
 
-<pre>
-int main() {
-  printf("ye");
-}
-</pre>
+<img src = # width = "800">
+
+Kuten edellä näkyvästä kuvasta käy ilmi, algoritmi luo ensin BSP-puulle juurisolmun, joka jaetaan sitten kahdeksi kahdeksi pienemmäksi lehdeksi. Sitten jaetaan puun solmuja jaetaan yhä pienemmäksi, kunnes kaikki lehtisolmut ovat tarpeeksi riittävän pieniä. Tällöin lehden koordinaateista voidaan muodostaa huone.
+
+***
+    private void splitLeaves() {
+        boolean splitSuccessfully = true;
+        while (splitSuccessfully) {
+            splitSuccessfully = false;
+            int j = leaves.size();
+            for (int i = 0; i < j; i++) {
+                Leaf l = leaves.get(i);
+                if (l.child1 == null && l.child2 == null) {
+                    if (l.width > maxLeafSize || l.height > maxLeafSize || getRandInt(0, 5) > 4) {
+                        if (l.splitLeaf()) {
+                            leaves.add(l.child1);
+                            leaves.add(l.child2);
+                            splitSuccessfully = true;
+                            j = leaves.size();
+                        }
+                    }
+                }
+            }
+        }
+    }
+***
+
+Kahden lehtisolmun huoneen välille luodaan käytävä, joka yhdistää huoneet. Algoritmi takaa, että kaikki huoneet ovat yhdistetty toisiinsa (kuten oikeellisuustesteistä käy ilmi). 
+
+***
+    public void createRooms(BSPTree bsp) {
+            if (child1 != null || child2 != null) {
+                if (child1 != null) {
+                    child1.createRooms(bsp);
+                }
+                if (child2 != null) {
+                    child2.createRooms(bsp);
+                }
+                if (child1 != null && child2 != null) {
+                    FloorGenerator.createHall(child1.getRoom(), child2.getRoom(), bsp.getLevel());
+                }
+            } else {
+                int w = getRandInt(bsp.roomMinSize, Math.min(bsp.roomMaxSize, width - 1));
+                int h = getRandInt(bsp.roomMinSize, Math.min(bsp.roomMaxSize, height - 1));
+                int x = getRandInt(this.x, this.x + (width - 1) - w);
+                int y = getRandInt(this.y, this.y + (height - 1) - h);
+                room = new Room(x, y, w, h);
+                bsp.getRooms().add(room);
+                FloorGenerator.createRoom(room, bsp.getLevel());
+            }
+        }
+***
+Lehtien jakaminen itsessään on varsin nopea operaatio, jonka aikavaativuus on luokkaa O(log n). Algoritmin kokonaisaika- ja tilavaativuus on kuitenkin *O(n\*m)*, missä *n* ja *m* ovat luotavan pelimaailman leveys ja korkeus. 
+
+***
+    for (int i = 0; i < mapWidth; i++) {
+        for (int j = 0; j < mapHeight; j++) {
+            level[i][j] = Tile.BOUNDS;
+        }
+    }
+***
+
+## Lähteet

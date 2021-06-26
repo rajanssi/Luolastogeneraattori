@@ -74,7 +74,7 @@ class Leaf {
     }
 
     /**
-     * Luo huoneita tämän lehden sisälle.
+     * Luo huoneita tämän lehden sisälle, tai yhdistää kaksi huonetta käytävällä.
      *
      * @param bsp Lehden BSP-puu, joka sisältää mm. kentät huoneiden maksimi- ja minimikoolle.
      */
