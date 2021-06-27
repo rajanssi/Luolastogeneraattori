@@ -132,6 +132,10 @@ Lehtien jakaminen itsessään on varsin nopea operaatio, jonka aikavaativuus on 
 
 Oleellista on myös, että maailmaa kasvatettaessa saadaan yhteys uusiin huoneisiin ja aikaisemmin luotuihin huoneisiin. Tämä tapahtuu luomalla käytävä vanhan BSP puun viimeisenä luodun huoneen ja uuden BSP puun ensimmäisenä luodun huoneen välille.
 
+## Puutteet/parannusehdotukset
+    
+Selkein parannusehdotus olisi, että luolastoa voisi kasvattaa jokaiseen suuntaan. Luolaston generointiin ei sinänsä tarvitsisi tehdä muutoksia, mutta luolaston ohjelman tilan päivittämisestä jokaisen kasvatuksen yhteydessä tulisi tehdä edistyneempi. 
+    
 ## Lähteet
     
 [Binary space partitioning algoritmista yleisesti](https://en.wikipedia.org/wiki/Binary_space_partitioning)
