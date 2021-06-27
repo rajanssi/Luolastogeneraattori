@@ -42,22 +42,6 @@ public class WorldTest {
         assertTrue(seen[r.centerX()][r.centerY()]);
     }
 
-    public void roomsAreConnectedAfterGrowingWorld() {
-        boolean[][] seen = new boolean[w.getWidth()][w.getHeight()];
-        dfs(seen, w.rooms.get(0).centerX(), w.rooms.get(0).centerY());
-
-        int index = getRandInt(1, w.rooms.size());
-        Room r = w.rooms.get(index);
-        assertTrue(seen[r.centerX()][r.centerY()]);
-
-        w.growWorld(50);
-
-        seen = new boolean[w.getWidth()][w.getHeight()];
-        dfs(seen, w.rooms.get(0).centerX(), w.rooms.get(0).centerY());
-        r = w.rooms.get(w.rooms.size() - 1);
-        assertTrue(seen[r.centerX()][r.centerY()]);
-    }
-
     private void dfs(boolean[][] seen, int x, int y) {
         if (seen[x][y]) {
             return;

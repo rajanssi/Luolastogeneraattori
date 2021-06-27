@@ -35,26 +35,7 @@ public class CharacterAiTest {
 
         assertTrue(c.getAi().withinReach(player));
     }
-
-    public void characterMovesTowardsPlayer() {
-        Character player = w.addPlayer();
-        Character c = new Character(w, 'X', Color.WHITE);
-        w.addAtEmptyLocation(c, w.rooms.get(0));
-        c.setAi();
-        Room r = w.rooms.get(0);
-
-        player.setX(r.centerX() + 1);
-        player.setY(r.centerY());
-
-        c.setX(r.centerX() - 1);
-        c.setY(r.centerY());
-
-        w.updateWorld();
-        w.updateWorld();
-
-        assertEquals(c.getX(), r.centerX());
-    }
-
+    
     @Test
     public void characterWillAttackNearbyPlayer() {
         Character player = w.addPlayer();
