@@ -6,7 +6,7 @@ Tämä dokumentti antaa lyhyen yleiskuvan ohjelman rakenteesta, käyttöliittym�
 
 Ohjelman rakenne noudattaa pääpiirteiltään kolmitasoista kerrosarkkitehtuuria ja koodin pakkausrakenne on seuraava:
 
-<img src = # width="400">
+<img src = https://user-images.githubusercontent.com/70325495/123552973-79d9c500-d781-11eb-8c8f-e062d9bf2107.png width="400">
 
 Pakkaus *userinterface* sisältää AsciiPanel kirjaston avulla toteutetun JFrame-pohjaisen käyttöliittymän. Käyttöliittymässä on luokat PlayScreen ja StartScreen, jotka toteuttavat rajapinnan Screen metodit ruudun päivittämiseen ja käyttäjän syötteiden rekisteröimiseen. 
 
@@ -45,7 +45,7 @@ Antamalla ohjelmalle jonkin argumentin komentoriviltä sitä käynnistettäessä
 
 Sovelluksen kommunikointi käyttöliittymän kanssa toteutetaan pakkauksen *game* World ja Character luokkien olioiden avulla. Pelinäkymään siirryttäessä luodaan instanssi World ja Character luokkien olioista kuvaamaan pelimaailmaa ja pelaajaa. World luokan kannalta oleellisia käyttöliittymälle tarjoavia toimintoja ovat mm.
 
-<img src = # width="800">
+<img src = https://user-images.githubusercontent.com/70325495/123553533-64b26580-d784-11eb-9eb0-8adf14274a94.png width="600">
 
 * void updateWorld()
 * void growWorld(int horizontalGrowth)
@@ -68,7 +68,7 @@ Character luokka sisältää metodeita mm. pelihahmon liikuttamista varten. Teko
 
 Ohjelman algoritmillisesti mielenkiintoisin toiminnallisuus tapahtuu *cavegenerator* pakkauksen sisällä. Luolastojen luominen perustuu [binary space partitioning](#) algoritmiin. Algoritmille annetaan parametreina haluttu maailman leveys ja korkeus, suurin sallittu lehden koko, ja huoneiden maksimi- ja minimikoot. 
 
-<img src = # width = "800">
+<img src = https://upload.wikimedia.org/wikipedia/commons/8/81/Binary_space_partition.png width = "800">
 
 Kuten edellä näkyvästä kuvasta käy ilmi, algoritmi luo ensin BSP-puulle juurisolmun, joka jaetaan sitten kahdeksi kahdeksi pienemmäksi lehdeksi. Sitten jaetaan puun solmuja jaetaan yhä pienemmäksi, kunnes kaikki lehtisolmut ovat tarpeeksi riittävän pieniä. Tällöin lehden koordinaateista voidaan muodostaa huone.
 
@@ -130,4 +130,15 @@ Lehtien jakaminen itsessään on varsin nopea operaatio, jonka aikavaativuus on 
     }
 ***
 
+Oleellista on myös, että maailmaa kasvatettaessa saadaan yhteys uusiin huoneisiin ja aikaisemmin luotuihin huoneisiin. Tämä tapahtuu luomalla käytävä vanhan BSP puun viimeisenä luodun huoneen ja uuden BSP puun ensimmäisenä luodun huoneen välille.
+
 ## Lähteet
+    
+[Binary space partitioning algoritmista yleisesti](https://en.wikipedia.org/wiki/Binary_space_partitioning)
+
+[Esimerkkitoteutus BSP algoritmista](https://github.com/AtTheMatinee/dungeon-generation)
+    
+[Käyttöliittymäkirjasto](https://github.com/trystan/AsciiPanel)
+    
+[Sovelluslogiikan kannalta hyödyllisiä ideota](http://trystans.blogspot.com/2016/01/roguelike-tutorial-00-table-of-contents.html)
+    
