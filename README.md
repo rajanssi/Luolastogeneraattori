@@ -1,6 +1,8 @@
 # Luolastogeneraattori
 
-Lyhyt kuvaus projektista 
+![cavegif2](https://user-images.githubusercontent.com/70325495/120907052-17e8dc80-c667-11eb-98f6-cfbfb8354cdf.gif)
+
+Rogue-tyylinen peli, joka luo kaksiulotteisia luolastoja binary space paritioning algoritmin avulla.
 
 ## Käyttöohje
 
