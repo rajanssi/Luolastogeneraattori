@@ -6,7 +6,7 @@ Rogue-tyylinen peli, joka luo kaksiulotteisia luolastoja binary space paritionin
 
 ## Käyttöohje
 
-Lataa ensin tiedosto [CaveGame-1.0.jar](https://github.com/rajanssi/Luolastogeneraattori/releases/tag/1). 
+Lataa ensin tiedosto [CaveGame-1.0.jar](https://github.com/rajanssi/Luolastogeneraattori/releases/tag/final). 
 
 ### Ohjelman käynnistäminen
 
