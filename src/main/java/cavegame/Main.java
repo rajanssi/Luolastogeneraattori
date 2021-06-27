@@ -60,9 +60,12 @@ public class Main extends JFrame implements KeyListener {
             Main app = new Main();
             app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             app.setVisible(true);
-        } else {
+        } else if (args[0].equals("test")){
             PerformanceTester p = new PerformanceTester();
             p.launch();
+        } else {
+            System.out.println("Virheellinen argumentti");
+            System.out.println("Jos haluat suorittaa testejä, anna argumentti 'test'");
         }
     }
 }

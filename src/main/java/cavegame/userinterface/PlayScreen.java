@@ -35,12 +35,10 @@ public class PlayScreen implements Screen {
         int left = getScrollX();
         int top = getScrollY();
         displayTiles(terminal, left, top);
-        String stats = String.format(" %3d/%3d hp", player.getHp(), 5);
         String location = String.format(" %3d x %3d y", player.getX(), player.getY());
         terminal.write("Enter luo uuden luolaston!", 1, screenHeight - 1);
         terminal.write("Esc palaa alkuruutuun!", 1, screenHeight - 2);
-        terminal.write(stats, 1, screenHeight - 3);
-        terminal.write(location, 1, screenHeight - 4);
+        terminal.write(location, 1, screenHeight - 3);
     }
 
     @Override
